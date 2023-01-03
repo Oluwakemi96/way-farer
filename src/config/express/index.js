@@ -5,7 +5,7 @@ import cors from 'cors';
 import fileUpload from 'express-fileupload';
 import loggerInit from '../logger/index';
 import enums from '../../lib/enums/index';
-import routes from '../routes/index';
+import route from '../routes/index';
 
 const expressConfig = app => {
   let logger;
@@ -54,7 +54,7 @@ const expressConfig = app => {
   });
 
   // Other routes
-  routes(app);
+  route(app);
 
   // error handlers
 
