@@ -1,7 +1,7 @@
 import devEnv from './development';
-import testEnv from './test';
 import prodEnv from './production';
+import testEnv from './test';
 
-export default {
-  devEnv, testEnv, prodEnv
+export {
+  devEnv, prodEnv, testEnv
 };
