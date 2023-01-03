@@ -1,0 +1,78 @@
+{
+  "name": "way-farer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint --fix src/ --ext .js",
+    "dev": "nodemon --exec babel-node src/app.js",
+    "prestart": "npm run migrate:up && npm run seed:up",
+    "start": "babel-node  src/app.js",
+    "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run seed:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test && cross-env WAYFARER_NODE_ENV=test npm run seed:up:test",
+    "test": "cross-env WAYFARER_NODE_ENV=test debug=true nyc --reporter=lcov --reporter=text --reporter=text-summary  mocha --timeout 120000 --require @babel/register tests/index.js --exit",
+    "migrate:create": "db-migrate create --config database.json",
+    "migrate:up": "db-migrate up --config database.json",
+    "migrate:down": "db-migrate down --config database.json",
+    "migrate:reset": "db-migrate reset --config database.json",
+    "seed:create": "db-migrate create:seed --config database.json",
+    "seed:up": "db-migrate up:seed --config database.json",
+    "seed:down": "db-migrate down:seed --config database.json",
+    "seed:reset": "db-migrate reset:seed --config database.json",
+    "migrate:up:test": "db-migrate up --config database.json -e test",
+    "migrate:reset:test": "db-migrate reset --config database.json -e test",
+    "seed:up:test": "db-migrate up:seed --config database.json -e test",
+    "seed:reset:test": "db-migrate reset:seed --config database.json -e test",
+    "build": "babel src -d dist --source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oluwakemi96/way-farer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Oluwakemi96/way-farer/issues"
+  },
+  "homepage": "https://github.com/Oluwakemi96/way-farer#readme",
+
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "db-migrate": "^0.11.13",
+    "db-migrate-pg": "^1.2.2",
+    "dotenv": "^16.0.3",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "helmet": "^6.0.0",
+    "http-status": "^1.5.3",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.8.0",
+    "pg-promise": "^10.15.0",
+    "winston": "^3.8.2"
+  },
+
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
+    "assert": "^2.0.0",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
+  }
+}
