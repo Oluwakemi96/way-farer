@@ -20,4 +20,4 @@ _thumbs/
 
 .env
 node_modules
-/server.log
+server.log
