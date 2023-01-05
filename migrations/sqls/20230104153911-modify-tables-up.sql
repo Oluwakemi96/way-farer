@@ -1,4 +1,3 @@
-/* Replace with your SQL commands */
 ALTER TABLE trips
 DROP CONSTRAINT trips_bus_id_fkey,
 ADD CONSTRAINT trips_bus_id_fkey
@@ -19,8 +18,8 @@ ADD CONSTRAINT user_activity_logs_user_id_fkey
 ALTER TABLE user_activity_logs
 DROP CONSTRAINT user_activity_logs_activity_type_fkey,
 ADD CONSTRAINT user_activity_logs_activity_type_fkey
-    FOREIGN KEY (code)
-    REFERENCES activity_type(code)
+    FOREIGN KEY (id)
+    REFERENCES activity_type(id)
     ON UPDATE CASCADE
     ON DELETE CASCADE;
 
