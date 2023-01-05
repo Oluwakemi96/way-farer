@@ -70,3 +70,270 @@
 {"level":"info","message":"03-Jan-2023, 16:53:57 Application starting..."}
 {"level":"info","message":"03-Jan-2023, 16:53:57 Environment is development"}
 {"level":"info","message":"03-Jan-2023, 16:53:57 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:02:07 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:02:07 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:02:07 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:04:36 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:04:36 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:04:36 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, Info: failed to validate request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"email is required - 422 - ModelMiddleware::validateData"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, user-d82e9b928cf911edaba7db647f92629b:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:04:36, user-d82e9b928cf911edaba7db647f92629b:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:36:51 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:36:51 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, user-0ea834f48cfe11edaf5497c4c796269e:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:36:51, user-0ea834f48cfe11edaf5497c4c796269e:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:38:45 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:38:45 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 14:38:45, Info: failed to validate request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"password length must be at least 8 characters long - 422 - ModelMiddleware::validateData"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, user-eec1396e8cfe11edbc7b23f6cf234e44:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:38:45, user-eec1396e8cfe11edbc7b23f6cf234e44:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:45:12 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:45:12 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:45:12 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:50:53 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:50:53 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:50:53 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:54:09 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:54:09 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:54:09 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, user-895adf388d0011ed854923bd9c53cfec:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:54:09, user-895adf388d0011ed854923bd9c53cfec:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"error","message":"User account creation failed::AuthController::signup"}
+{"level":"info","message":"05-Jan-2023, 14:55:36 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:55:36 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:55:36 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:55:36, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 14:56:44 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 14:56:44 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 14:56:44 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, Info: failed to validate request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"password length must be at least 8 characters long - 422 - ModelMiddleware::validateData"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, user-e23ba3588d0011eda1035bdbf143663c:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 14:56:44, user-e23ba3588d0011eda1035bdbf143663c:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:01:27 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:01:27 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:01:27 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:01:32 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:01:32 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:01:32 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:01:35 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:01:35 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:01:35 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:02:07 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:02:07 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:02:07 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:02:18 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:02:18 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:02:18 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:02:19 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:02:19 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:02:19 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, user-ab7308ba8d0111ed9226fba052ed7502:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:02:19, user-ab7308ba8d0111ed9226fba052ed7502:::Info: successfully sends mail to user signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:16:35 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:16:35 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:16:35 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:16:35, Info: failed to validate request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"password length must be at least 8 characters long - 422 - ModelMiddleware::validateData"}
+{"date":"Thu Jan 05 2023 15:16:35 GMT+0100 (West Africa Standard Time)","error":{"actual":422,"expected":201,"message":"expected 422 to equal 201","name":"AssertionError","operator":"strictEqual","showDiff":true,"stack":"AssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:19:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"},"exception":true,"level":"error","message":"uncaughtException: expected 422 to equal 201\nAssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:19:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","os":{"loadavg":[2.12646484375,2.1640625,2.15966796875],"uptime":453548},"process":{"argv":["/usr/local/bin/node","/Users/rashidatsikiru/Documents/way-farer/node_modules/.bin/mocha","--require","@babel/register","tests/integration/","tests/payloads/","tests/unit/","--timeout","120000","--exit"],"cwd":"/Users/rashidatsikiru/Documents/way-farer","execPath":"/usr/local/bin/node","gid":20,"memoryUsage":{"arrayBuffers":172591,"external":1204697,"heapTotal":101515264,"heapUsed":43379888,"rss":161005568},"pid":32096,"uid":501,"version":"v18.12.1"},"stack":"AssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:19:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","trace":[{"column":35,"file":"/Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js","function":null,"line":19,"method":null,"native":false},{"column":12,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":"Test.Request.callback","line":716,"method":"callback","native":false},{"column":18,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":null,"line":916,"method":null,"native":false},{"column":7,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js","function":null,"line":19,"method":null,"native":false},{"column":35,"file":"node:events","function":"IncomingMessage.emit","line":525,"method":"emit","native":false},{"column":12,"file":"node:internal/streams/readable","function":"endReadableNT","line":1359,"method":null,"native":false},{"column":21,"file":"node:internal/process/task_queues","function":"processTicksAndRejections","line":82,"method":null,"native":false}]}
+{"level":"info","message":"05-Jan-2023, 15:17:29 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:17:29 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:17:29 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:17:29, Info: failed to validate request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"password length must be at least 8 characters long - 422 - ModelMiddleware::validateData"}
+{"date":"Thu Jan 05 2023 15:17:29 GMT+0100 (West Africa Standard Time)","error":{"actual":422,"expected":201,"message":"expected 422 to equal 201","name":"AssertionError","operator":"strictEqual","showDiff":true,"stack":"AssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:20:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"},"exception":true,"level":"error","message":"uncaughtException: expected 422 to equal 201\nAssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:20:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","os":{"loadavg":[2.09814453125,2.13818359375,2.14892578125],"uptime":453602},"process":{"argv":["/usr/local/bin/node","/Users/rashidatsikiru/Documents/way-farer/node_modules/.bin/mocha","--require","@babel/register","tests/integration/","tests/payloads/","tests/unit/","--timeout","120000","--exit"],"cwd":"/Users/rashidatsikiru/Documents/way-farer","execPath":"/usr/local/bin/node","gid":20,"memoryUsage":{"arrayBuffers":941590,"external":1975673,"heapTotal":85901312,"heapUsed":58758728,"rss":140607488},"pid":32185,"uid":501,"version":"v18.12.1"},"stack":"AssertionError: expected 422 to equal 201\n    at /Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js:20:35\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","trace":[{"column":35,"file":"/Users/rashidatsikiru/Documents/way-farer/tests/integration/integration.auth.js","function":null,"line":20,"method":null,"native":false},{"column":12,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":"Test.Request.callback","line":716,"method":"callback","native":false},{"column":18,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":null,"line":916,"method":null,"native":false},{"column":7,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js","function":null,"line":19,"method":null,"native":false},{"column":35,"file":"node:events","function":"IncomingMessage.emit","line":525,"method":"emit","native":false},{"column":12,"file":"node:internal/streams/readable","function":"endReadableNT","line":1359,"method":null,"native":false},{"column":21,"file":"node:internal/process/task_queues","function":"processTicksAndRejections","line":82,"method":null,"native":false}]}
+{"level":"info","message":"05-Jan-2023, 15:18:06 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:18:06 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:18:06 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:18:06, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:19:14 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:19:14 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:19:14 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:19:14, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:19:14, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:23:05 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:23:05 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:23:05 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 15:23:05, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 15:24:32 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:24:32 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:24:32 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:24:32, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:26:02 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:26:02 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:26:02 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:26:02, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:27:43 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:27:43 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:27:43 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:27:43, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:29:43 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:29:43 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:29:43 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:29:43, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:29:43, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:32:19 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:32:19 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:32:19 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:32:19, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:32:19, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:32:19, :::Info: right here, not working"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:32:19, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:33:23 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:33:23 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:33:23 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:33:23, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:33:23, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:33:23, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:33:23, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:33:23, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:34:15 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:34:15 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:34:15 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:34:15, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:34:15, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:34:15, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:34:15, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:34:15, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:34:51 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:34:51 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:34:51 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:34:51, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:37:20 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:37:20 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:37:20 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:37:20, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:37:20, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:37:20, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:37:20, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:37:20, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:39:21 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:39:21 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:39:21 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:39:21, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:39:21, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:39:21, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:39:21, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:39:21, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:40:14 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:40:14 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:40:14 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:40:14, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:40:14, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:40:14, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:40:14, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:40:14, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:41:36 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:41:36 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:41:36 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:41:36, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:41:36, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:41:36, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 15:41:36, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"error","message":"User account creation failed::AuthController::signup"}
+{"level":"info","message":"05-Jan-2023, 15:43:20 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:43:20 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:43:20 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:43:20, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:50:35 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:50:35 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:50:35 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:50:35, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:56:20 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:56:20 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:56:20 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:56:20, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:56:20, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:56:20, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:56:20, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:56:20, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 15:58:15 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 15:58:15 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 15:58:15 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 15:58:15, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: got email from body"}
+{"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
+{"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: ran this"}
