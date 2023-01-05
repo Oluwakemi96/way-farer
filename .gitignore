@@ -21,3 +21,9 @@ _thumbs/
 .env
 node_modules
 server.log
+.husky
+.husky/
+pre-commit
+pre-push
+**/pre-commit
+**/pre-push
