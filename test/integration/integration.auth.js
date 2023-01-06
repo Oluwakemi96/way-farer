@@ -14,7 +14,6 @@ describe('Signup', () => {
       .post('/api/v1/auth/sign_up')
       .send(userOneProfile)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_CREATED);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
@@ -52,21 +51,129 @@ describe('Signup', () => {
       });
   });
 
-  it('Should return error if email', (done) => {
+  it('Should return error if email is not sent for user one', (done) => {
     chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-        phone_number: '+2349058702000',
-        referral_code: '567UJI9820'
-      })
+      .post('/api/v1/auth/sign_up')
+      .send(
+        {
+          first_name: userOneProfile.first_name,
+          last_name: userOneProfile.last_name,
+          password: userOneProfile.password
+        }
+
+      )
       .end((err, res) => {
-        expect(res.statusCode).to.equal(400);
+        expect(res.statusCode).to.equal(422);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
-        expect(res.body.message).to.equal(enums.INVALID('referral code'));
-        expect(res.body.error).to.equal('BAD_REQUEST');
+        expect(res.body.message).to.equal(enums.EMAIL_REQUIRED);
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
         expect(res.body.status).to.equal(enums.ERROR_STATUS);
         done();
       });
   });
+
+  it('Should return error if email is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/sign_up')
+      .send(
+        {
+          first_name: userTwoProfile.first_name,
+          last_name: userTwoProfile.last_name,
+          password: userTwoProfile.password
+        }
+
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.EMAIL_REQUIRED);
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if first name is not sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/sign_up')
+      .send(
+        {
+          email: userOneProfile.email,
+          last_name: userOneProfile.last_name,
+          password: userOneProfile.password
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('first_name is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should return error if first name is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/sign_up')
+      .send(
+        {
+          email: userTwoProfile.email,
+          last_name: userTwoProfile.last_name,
+          password: userTwoProfile.password
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('first_name is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+    it('Should return error if last name is not sent for user one', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/sign_up')
+        .send(
+          {
+            email: userOneProfile.email,
+            first_name: userOneProfile.first_name,
+            password: userOneProfile.password
+          }
+        )
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(422);
+          expect(res.body).to.have.property('message');
+          expect(res.body).to.have.property('status');
+          expect(res.body.message).to.equal('last_name is required');
+          expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+          expect(res.body.status).to.equal(enums.ERROR_STATUS);
+          done();
+        });
+    });
+  });
+  it('Should return error if last name is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/sign_up')
+      .send(
+        {
+          email: userTwoProfile.email,
+          first_name: userTwoProfile.first_name,
+          password: userTwoProfile.password
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('last_name is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
 });

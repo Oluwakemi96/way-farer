@@ -7,5 +7,7 @@ export const SOMETHING_BROKE_MESSAGE = 'Oooops! Something broke, kindly try late
 export const REGISTER_USER = 'user registered successfully';
 export const EXISTING_EMAIL = 'email already exist, please signup with another email';
 export const ACCOUNT_CREATED = 'user registered successfully';
+export const EMAIL_REQUIRED = 'email is required';
+
 
 
