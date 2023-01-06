@@ -337,3 +337,58 @@
 {"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: got email from body"}
 {"level":"error","message":"checking existing email failed::AuthMiddleware::checkIfEmailAlreadyExist"}
 {"level":"info","message":"05-Jan-2023, 15:58:15, :::Info: ran this"}
+{"level":"info","message":"05-Jan-2023, 16:18:35 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 16:18:35 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 16:18:35 Application started on port 8000"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: existing email not found correctly"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 16:18:35, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: existing email not found correctly"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 16:18:35, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:18:35, :::Info: existing email not found correctly"}
+{"level":"error","message":"email already exist, please signup with another email - 400 - "}
+{"level":"info","message":"05-Jan-2023, 16:27:07 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 16:27:07 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 16:27:07 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: existing email not found correctly"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:27:07, user-6ab1e0608d0d11ed8e797379e4d3a818:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"date":"Thu Jan 05 2023 16:27:08 GMT+0100 (West Africa Standard Time)","error":{"actual":false,"expected":"false","message":"expected false to equal 'false'","name":"AssertionError","operator":"strictEqual","showDiff":true,"stack":"AssertionError: expected false to equal 'false'\n    at /Users/rashidatsikiru/Documents/way-farer/test/integration/integration.auth.js:25:43\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"},"exception":true,"level":"error","message":"uncaughtException: expected false to equal 'false'\nAssertionError: expected false to equal 'false'\n    at /Users/rashidatsikiru/Documents/way-farer/test/integration/integration.auth.js:25:43\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","os":{"loadavg":[1.52978515625,1.81689453125,1.97021484375],"uptime":457781},"process":{"argv":["/usr/local/bin/node","/Users/rashidatsikiru/Documents/way-farer/node_modules/.bin/mocha","--require","@babel/register","test/integration/","test/payloads/","test/unit/","--timeout","120000","--exit"],"cwd":"/Users/rashidatsikiru/Documents/way-farer","execPath":"/usr/local/bin/node","gid":20,"memoryUsage":{"arrayBuffers":182643,"external":1214749,"heapTotal":95862784,"heapUsed":43183208,"rss":152567808},"pid":36330,"uid":501,"version":"v18.12.1"},"stack":"AssertionError: expected false to equal 'false'\n    at /Users/rashidatsikiru/Documents/way-farer/test/integration/integration.auth.js:25:43\n    at Test.Request.callback (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:716:12)\n    at /Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js:916:18\n    at IncomingMessage.<anonymous> (/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js:19:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1359:12)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)","trace":[{"column":43,"file":"/Users/rashidatsikiru/Documents/way-farer/test/integration/integration.auth.js","function":null,"line":25,"method":null,"native":false},{"column":12,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":"Test.Request.callback","line":716,"method":"callback","native":false},{"column":18,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/index.js","function":null,"line":916,"method":null,"native":false},{"column":7,"file":"/Users/rashidatsikiru/Documents/way-farer/node_modules/superagent/lib/node/parsers/json.js","function":null,"line":19,"method":null,"native":false},{"column":35,"file":"node:events","function":"IncomingMessage.emit","line":525,"method":"emit","native":false},{"column":12,"file":"node:internal/streams/readable","function":"endReadableNT","line":1359,"method":null,"native":false},{"column":21,"file":"node:internal/process/task_queues","function":"processTicksAndRejections","line":82,"method":null,"native":false}]}
+{"level":"info","message":"05-Jan-2023, 16:33:14 Application starting..."}
+{"level":"info","message":"05-Jan-2023, 16:33:14 Environment is development"}
+{"level":"info","message":"05-Jan-2023, 16:33:14 Application started on port 8080"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: existing email not found correctly"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, user-45567a288d0e11edb300577881a946a4:::Info: successfully registered user to the database signup.controllers.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, Info: successfully validates request parameters validateData.middlewares.model.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: first hit"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: right here, not working"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: got email from body"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: existing email not found correctly"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: successfully hashed user's password.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: generated an email verification token.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, :::Info: set email verification expiry time.middlewares.auth.js"}
+{"level":"info","message":"05-Jan-2023, 16:33:14, user-455d038e8d0e11edb30053fe1c1aed9b:::Info: successfully registered user to the database signup.controllers.auth.js"}

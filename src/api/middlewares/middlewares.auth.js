@@ -42,11 +42,8 @@ export const setEmailVerificationExpiry = async (req, res, next) => {
 };
 
 export const checkIfEmailAlreadyExist = async (req, res, next) => {
-  logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: first hit`);
   try {
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: right here, not working`);
     const  { email }  = req.body; 
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: got email from body`);
     const existingEmail = await authServices.findEmail([ email ]);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: existing email not found correctly`);
     if (existingEmail) {
@@ -56,6 +53,5 @@ export const checkIfEmailAlreadyExist = async (req, res, next) => {
   } catch (error) {
     error.label = enums.CHECK_EXISTING_EMAIL; 
     logger.error(`checking existing email failed::${enums.CHECK_EXISTING_EMAIL}`, error.message);
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: ran this`);
   }
 };

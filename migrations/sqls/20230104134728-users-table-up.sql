@@ -1,4 +1,5 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+DROP TYPE IF EXISTS activity_status;
 CREATE TYPE activity_status AS ENUM('success', 'fail');
 
 CREATE TABLE IF NOT EXISTS users (

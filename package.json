@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "eslint --fix src/ --ext .js",
-    "start": "babel-node src/index.js",
-    "dev": "nodemon --exec babel-node src/index.js",
+    "start": "babel-node src/app.js",
+    "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test",
     "test": "cross-env WAYFARER_NODE_ENV=test mocha --require @babel/register test/**/ --timeout 120000 --exit",
     "migrate:up": "db-migrate up --config database.json",
