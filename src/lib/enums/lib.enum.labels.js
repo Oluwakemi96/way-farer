@@ -12,6 +12,8 @@ export const CHECK_EMAIL_VERIFIED = 'AuthMiddleware::checkIfEmailIsVerified';
 export const VALIDATE_PASSWORD = 'AuthMiddleware::checkIfPasswordsMatch';
 export const GENERATE_JWT = 'AuthMiddleware::generateJwt';
 export const LOGIN_CONTROLLER = 'AuthController::login';
+export const VERIFY_EMAIL_CONTROLLER = 'AuthController::verifyEmail';
+export const CHECK_EMAIL_VERIFICATION_TOKEN = 'AuthController::checkIfEmailVerificationTokenIsPresentOrExpired';
 
 
 

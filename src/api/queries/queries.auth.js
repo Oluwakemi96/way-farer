@@ -1,5 +1,5 @@
 export default {
-  registerUsers: `
+    registerUsers: `
         INSERT INTO users(
             email,
             first_name,
@@ -12,10 +12,23 @@ export default {
         RETURNING *
 
     `,
-  findEmail: `
-        SELECT email, is_email_verified
+    findEmail: `
+        SELECT user_id, email, is_email_verified, password
            FROM users
         WHERE email = $1
-        
-    `
+    `,
+    findEmailVerificationToken: `
+        SELECT user_id, email_token, email
+            FROM users
+        WHERE email_token = $1
+            AND email_token_expiry::timestamp > NOW()       
+    `,
+    verifyEmail: `
+        UPDATE users
+            SET is_email_verified = true,
+                email_token = null,
+                email_token_expiry = null,
+                updated_at = NOW()
+        WHERE user_id = $1    
+    `,
 };

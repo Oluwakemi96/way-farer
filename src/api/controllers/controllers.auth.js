@@ -32,6 +32,18 @@ export const signUp = async (req, res) => {
 
 };
 
+export const verifyEmail = async (req, res) => {
+  try {
+    await AuthServices.verifyEmail([req.user_id]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${req.user_id}:::Info: successfully verified client email`);
+
+    return ApiResponse.success(res, enums.VERIFY_CLIENT_EMAIL, enums.HTTP_OK);
+  } catch (error) {
+    error.label =  enums.VERIFY_EMAIL_CONTROLLER;
+    logger.error(`Client email verified::${enums.VERIFY_EMAIL_CONTROLLER}`, error.message);  
+  }
+};
+
 export const loginClient = async (req, res) => {
   try {
     const user = _.pick(req.user, userDetails);

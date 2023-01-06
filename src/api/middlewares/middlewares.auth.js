@@ -118,3 +118,20 @@ export const generateJwtToken = async (req, res, next) => {
     logger.error(`generating jwt::${enums.GENERATE_JWT}`, error.message);
   }
 }
+
+export const validateEmailVerificationToken = async (req, res, next) => {
+  try {
+    const user = await authServices.findEmailVerificationToken(req.params.emailToken);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: email verification token found`);
+
+    if (!user) {
+      return ApiResponse.error(res, enums.TOKEN_ABSENT_OR_EXPIRED, enums.HTTP_BAD_REQUEST);
+    }
+
+    req.user_id = user.user_id;
+    return next();
+  } catch (error) {
+    error.label = enums.CHECK_EMAIL_VERIFICATION_TOKEN; 
+    logger.error(`validating email verification token::${enums.CHECK_EMAIL_VERIFICATION_TOKEN}`, error.message);
+  }
+}

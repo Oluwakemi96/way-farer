@@ -18,6 +18,12 @@ router.post(
   AuthController.signUp
 );
 
+router.put(
+  "/verify-email/:emailToken",
+  AuthMiddleware.validateEmailVerificationToken,
+  AuthController.verifyEmail
+);
+
 router.post(
   "/login",
   Model(Schema.login, "payload"),
