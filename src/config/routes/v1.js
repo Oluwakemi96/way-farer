@@ -1,7 +1,8 @@
-import v1Routes from './v1';
+import { Router } from 'express';
+import AuthRoutes from '../../api/routes/routes.auth';
 
-const route = (app) => {
-  app.use('/api/v1', v1Routes);
-};
+const router = Router();
+router.use('/auth', AuthRoutes);
 
-export default route;
+export default router;
+
