@@ -59,7 +59,7 @@ export const checkIfEmailAlreadyExist = async (req, res, next) => {
 export const emailDoesNotExist = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const user = await authServices.findEmail([email]);
+    const user = await authServices.findEmail([ email ]);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user with email found`);
 
     if (!user) return ApiResponse.error(res, enums.EMAIL_DOES_NOT_EXIST, enums.HTTP_BAD_REQUEST);
@@ -70,7 +70,7 @@ export const emailDoesNotExist = async (req, res, next) => {
     error.label = enums.EMAIL_DOES_NOT_EXIST; 
     logger.error(`checking if email exists::${enums.EMAIL_DOES_NOT_EXIST}`, error.message);
   }
-}
+};
 
 export const checkIfEmailVerified = async (req, res, next) => {
   try {
@@ -85,12 +85,12 @@ export const checkIfEmailVerified = async (req, res, next) => {
     error.label = enums.CHECK_EMAIL_VERIFIED; 
     logger.error(`checking if email is verified::${enums.CHECK_EMAIL_VERIFIED}`, error.message);
   }
-}
+};
 
 export const validateUserPassword = async (req, res, next) => {
   try {
     const { user, body } = req;
-    const passwordMatch = await hash.comparePasswordHash(body.password.trim(), user.password)
+    const passwordMatch = await hash.comparePasswordHash(body.password.trim(), user.password);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: password match successful`);
 
     if (!passwordMatch)
@@ -101,7 +101,7 @@ export const validateUserPassword = async (req, res, next) => {
     error.label = enums.VALIDATE_PASSWORD; 
     logger.error(`checking if passwords match::${enums.VALIDATE_PASSWORD}`, error.message);
   }
-}
+};
 
 export const generateJwtToken = async (req, res, next) => {
   try {
@@ -117,7 +117,7 @@ export const generateJwtToken = async (req, res, next) => {
     error.label = enums.GENERATE_JWT; 
     logger.error(`generating jwt::${enums.GENERATE_JWT}`, error.message);
   }
-}
+};
 
 export const validateEmailVerificationToken = async (req, res, next) => {
   try {
@@ -134,4 +134,4 @@ export const validateEmailVerificationToken = async (req, res, next) => {
     error.label = enums.CHECK_EMAIL_VERIFICATION_TOKEN; 
     logger.error(`validating email verification token::${enums.CHECK_EMAIL_VERIFICATION_TOKEN}`, error.message);
   }
-}
+};

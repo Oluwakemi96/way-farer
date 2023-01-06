@@ -11,3 +11,13 @@ export const userTwoProfile = {
   last_name: 'Oyelade',
   password: 'temitope'
 };
+
+export const loginUserOne = {
+  email: 'rashidats@gmail.com',
+  password: 'danielisaac'
+}
+
+export const loginUserTwo = {
+  email: 'daniel@enyata.com',
+  password: 'temitope'
+}

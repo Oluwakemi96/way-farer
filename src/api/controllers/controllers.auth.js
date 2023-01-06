@@ -1,11 +1,11 @@
-import _ from "lodash";
+import _ from 'lodash';
 import * as AuthServices from '../services/services.auth';
 import AuthPayloads from '../../lib/payloads/lib.payload.auth';
 import enums from '../../lib/enums/index';
 import ApiResponse from '../../lib/http/lib.http.responses';
 import mails from '../../config/email/mails';
 import config from '../../config/index';
-import { userDetails } from "../../lib/constants/constants"
+import { userDetails } from '../../lib/constants/constants';
 
 export const signUp = async (req, res) => {
   try {
@@ -34,7 +34,7 @@ export const signUp = async (req, res) => {
 
 export const verifyEmail = async (req, res) => {
   try {
-    await AuthServices.verifyEmail([req.user_id]);
+    await AuthServices.verifyEmail([ req.user_id ]);
     logger.info(`${enums.CURRENT_TIME_STAMP}, ${req.user_id}:::Info: successfully verified client email`);
 
     return ApiResponse.success(res, enums.VERIFY_CLIENT_EMAIL, enums.HTTP_OK);
