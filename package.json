@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint --fix src/ --ext .js",
-    "start": "babel-node src/app.js",
+    "start": "nodemon --exec babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test",
     "test": "cross-env WAYFARER_NODE_ENV=test mocha --require @babel/register test/**/ --timeout 120000 --exit",
@@ -45,6 +45,7 @@
     "http-status": "^1.5.3",
     "joi": "^17.7.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "nodemailer": "^6.8.0",
     "pg-promise": "^10.15.0",
     "winston": "^3.8.2"

@@ -13,7 +13,7 @@ export default {
 
     `,
   findEmail: `
-        SELECT email
+        SELECT email, is_email_verified
            FROM users
         WHERE email = $1
         
