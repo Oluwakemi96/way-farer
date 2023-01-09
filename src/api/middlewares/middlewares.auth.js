@@ -60,7 +60,7 @@ export const emailDoesNotExist = async (req, res, next) => {
   try {
     const { email } = req.body;
     const user = await authServices.findEmail([ email ]);
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user with email found`);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user with email found emailDoesNotExist.middlewares.auth.js`);
 
     if (!user) return ApiResponse.error(res, enums.EMAIL_DOES_NOT_EXIST, enums.HTTP_BAD_REQUEST);
 
@@ -75,6 +75,7 @@ export const emailDoesNotExist = async (req, res, next) => {
 export const checkIfEmailVerified = async (req, res, next) => {
   try {
     const { user } = req;
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user email verified checkIfEmailVerified.middlewares.auth.js`);
 
     if (!user.is_email_verified) 
       return ApiResponse.error(res, enums.UNVERIFIED_EMAIL, enums.HTTP_BAD_REQUEST);
@@ -91,7 +92,7 @@ export const validateUserPassword = async (req, res, next) => {
   try {
     const { user, body } = req;
     const passwordMatch = await hash.comparePasswordHash(body.password.trim(), user.password);
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: password match successful`);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: password match successful validateUserPassword.middlewares.auth.js`);
 
     if (!passwordMatch)
       return ApiResponse.error(res, enums.PASSWORD_INCORRECT, enums.HTTP_BAD_REQUEST);
@@ -109,20 +110,20 @@ export const generateJwtToken = async (req, res, next) => {
     const data = { userId: user.user_id, email: user.email };
     const token = helpers.generateJWT(data);
 
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: jwt generated successfully`);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: jwt generated successfully generateJwtToken.middlewares.auth.js`);
 
     req.user.token = token;
     return next();
   } catch (error) {
     error.label = enums.GENERATE_JWT; 
-    logger.error(`generating jwt::${enums.GENERATE_JWT}`, error.message);
+    logger.error(`generating jwt failed::${enums.GENERATE_JWT}`, error.message);
   }
 };
 
 export const validateEmailVerificationToken = async (req, res, next) => {
   try {
     const user = await authServices.findEmailVerificationToken(req.params.emailToken);
-    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: email verification token found`);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: email verification token found validateEmailVerificationToken.middlewares.auth.js`);
 
     if (!user) {
       return ApiResponse.error(res, enums.TOKEN_ABSENT_OR_EXPIRED, enums.HTTP_BAD_REQUEST);

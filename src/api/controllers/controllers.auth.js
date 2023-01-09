@@ -35,7 +35,7 @@ export const signUp = async (req, res) => {
 export const verifyEmail = async (req, res) => {
   try {
     await AuthServices.verifyEmail([ req.user_id ]);
-    logger.info(`${enums.CURRENT_TIME_STAMP}, ${req.user_id}:::Info: successfully verified client email`);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${req.user_id}:::Info: successfully verified client email verifyEmail.controllers.auth.js`);
 
     return ApiResponse.success(res, enums.VERIFY_CLIENT_EMAIL, enums.HTTP_OK);
   } catch (error) {
@@ -47,6 +47,7 @@ export const verifyEmail = async (req, res) => {
 export const loginClient = async (req, res) => {
   try {
     const user = _.pick(req.user, userDetails);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${user}:::Info: successfully logged in client loginClient.controllers.auth.js`);
 
     return ApiResponse.success(res, enums.LOGIN_CLIENT, enums.HTTP_OK, user);
   } catch (error) {
