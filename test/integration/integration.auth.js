@@ -175,7 +175,9 @@ describe('Signup', () => {
         done();
       });
   });
+});
 
+describe('Login', () => {
   it('Should verify user one email successfully', (done) => {
     chai.request(app)
       .put(`/api/v1/auth/verify-email/${process.env.WAYFARER_USER_ONE_VERIFICATION_TOKEN}`)
@@ -200,6 +202,57 @@ describe('Signup', () => {
         expect(res.body).to.have.property('data');
         expect(res.body.message).to.equal(enums.VERIFY_CLIENT_EMAIL);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it('Should not verify user email if token is invalid', (done) => {
+    chai.request(app)
+      .put(`/api/v1/auth/verify-email/1234`)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(400);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.TOKEN_ABSENT_OR_EXPIRED);
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if invalid email is sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          email: `${userOneProfile.email}...`,
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email must be a valid email');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if email is sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          email: `${userTwoProfile.email}...`,
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email must be a valid email');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
         done();
       });
   });
@@ -319,4 +372,4 @@ describe('Signup', () => {
         done();
       });
   });
-});
+})
