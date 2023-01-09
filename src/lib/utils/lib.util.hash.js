@@ -15,7 +15,6 @@ export const generateRandomString = (size) => {
   try {
     return Crypto.randomBytes(size).toString('hex');
   } catch (error) {
-    console.log(error);
     return error;
   }
 }; 

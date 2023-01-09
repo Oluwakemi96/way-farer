@@ -373,3 +373,236 @@ describe('Login', () => {
       });
   });
 })
+describe('forgot password', () => {
+  it('Should send a reset password link successfully to user one ', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .send({
+        email: userOneProfile.email
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.FORGOT_PASSWORD);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        process.env.WAYFARER_USER_ONE_PASSWORD_RESET_TOKEN = res.body.data;
+        done();
+      });
+  });
+  it('Should return error if email is not sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should return error if invalid email is sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .send({
+        email: `${userOneProfile.email}jdkdjhdjhs`
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email must be a valid email');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should send a reset password link successfully to user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .send({
+        email: userTwoProfile.email
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.FORGOT_PASSWORD);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        process.env.WAYFARER_USER_TWO_PASSWORD_RESET_TOKEN = res.body.data;
+        done();
+      });
+  });
+  it('Should return error if email is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should return error if invalid email is sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/forgot_password')
+      .send({
+        email: `${userOneProfile.email}jdkdjhdjhs`
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email must be a valid email');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+});
+
+describe('reset password', () => {
+  it('Should successfully reset user one password ', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: process.env.WAYFARER_USER_ONE_PASSWORD_RESET_TOKEN
+      })
+      .send({
+        password: 'boladeJohnson'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.PASSWORD_RESET);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+  it('Should throw error if invalid token is sent for user one', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: `${process.env.WAYFARER_USER_ONE_PASSWORD_RESET_TOKEN}hdhhjdgs`
+      })
+      .send({
+        password: 'boladeAyobami'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(404);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.INVALID_TOKEN);
+        expect(res.body.error).to.equal('NOT_FOUND');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should throw error if password is not sent for user one', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: process.env.WAYFARER_USER_ONE_PASSWORD_RESET_TOKEN
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should throw error if token is not sent for user one', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .send({
+        password: 'boladeAyobami'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password_token is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should successfully reset user two password ', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: process.env.WAYFARER_USER_TWO_PASSWORD_RESET_TOKEN
+      })
+      .send({
+        password: 'boladeJohnson'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.PASSWORD_RESET);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });it('Should throw error if invalid token is sent for user two', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: `${process.env.WAYFARER_USER_TWO_PASSWORD_RESET_TOKEN}hdhhjdgs`
+      })
+      .send({
+        password: 'boladeAyobami'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(404);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal(enums.INVALID_TOKEN);
+        expect(res.body.error).to.equal('NOT_FOUND');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should throw error if password is not sent for user two', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .query({
+        password_token: process.env.WAYFARER_USER_ONE_PASSWORD_RESET_TOKEN
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+  it('Should throw error if token is not sent for user two', (done) => {
+    chai.request(app)
+      .patch('/api/v1/auth/reset_password')
+      .send({
+        password: 'boladeAyobami'
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password_token is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+});
+

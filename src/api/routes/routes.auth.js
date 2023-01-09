@@ -37,4 +37,27 @@ router.post(
   AuthController.loginClient
 );
 
+router.post(
+  '/forgot_password',
+  Model(Schema.forgotPassword, 'payload'),
+  [
+    AuthMiddleware.checkIfEmailExist,
+    AuthMiddleware.generateForgotPasswordToken,
+    AuthMiddleware.setEmailVerificationExpiry
+  ],
+  AuthController.forgotPassword
+  
+);
+
+router.patch(
+  '/reset_password',
+  Model(Schema.resetPasswordToken, 'query'),
+  Model(Schema.resetPassword, 'payload'),
+  [
+    AuthMiddleware.verifyPasswordResetToken,
+    AuthMiddleware.hashUserPassword
+  ],
+  AuthController.resetPassword
+);
+
 export default router;
