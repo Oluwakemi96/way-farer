@@ -20,6 +20,7 @@ router.post(
 
 router.put(
   '/verify-email/:emailToken',
+  Model(Schema.tokenParam, 'param'),
   AuthMiddleware.validateEmailVerificationToken,
   AuthController.verifyEmail
 );
