@@ -29,9 +29,39 @@ const sendSignUp = (to, url) => {
   });
 };
 
+const forgotPassword = (to, url) => {
+  const mailOptions = {
+    from: 'dillydot22@gmail.com',
+    to,
+    subject: 'Forgot Password',
+    text: `Kindly click on this link ${url} to reset your password, link expires in 10mins`
+  };
+  transporter.sendMail(mailOptions, (err) => {
+    if (err) {
+      logger.error('mail sending failed', err.message);
+      return err;
+    }
+  });
+};
+const resetPassword = (to) => {
+  const mailOptions = {
+    from: 'dillydot22@gmail.com',
+    to,
+    subject: 'Password Reset Successful',
+    text: 'You have successfully reset your password, kindly proceed to login'
+  };
+  transporter.sendMail(mailOptions, (err) => {
+    if (err) {
+      logger.error('mail sending failed', err.message);
+      return err;
+    }
+  });
+};
 
 
 
 export default {
-  sendSignUp  
+  sendSignUp,
+  forgotPassword,
+  resetPassword 
 };

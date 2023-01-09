@@ -1,3 +1,4 @@
+
 export default {
   registerUsers: `
         INSERT INTO users(
@@ -36,5 +37,64 @@ export default {
                 email_token_expiry = null,
                 updated_at = NOW()
         WHERE user_id = $1    
-    `
+    `,
+  getUserDetailsByEmail: `
+        SELECT 
+            id,
+            user_id,
+            email,
+            first_name,
+            last_name,
+            is_admin,
+            is_email_verified,
+            email_token,
+            email_token_expiry,
+            password_token,
+            password_token_expiry
+        FROM 
+            users   
+        WHERE email =  $1         
+      `,
+
+  setForgotPasswordToken: `
+        UPDATE users
+            SET 
+              updated_at = NOW(),
+              password_token = $2,
+              password_token_expiry = $3
+        WHERE user_id = $1
+        RETURNING 
+            email,
+            first_name,
+            last_name,
+            is_admin,
+            is_email_verified
+            password_token           
+   `,
+
+  resetUserPassword: `
+            UPDATE users
+                SET 
+                 updated_at = NOW(),
+                 password = $2
+            WHERE user_id = $1
+   `,
+  getUserByToken: `
+            SELECT 
+            id,
+            user_id,
+            email,
+            first_name,
+            last_name,
+            is_admin,
+            is_email_verified,
+            email_token,
+            email_token_expiry,
+            password_token,
+            password_token_expiry
+        FROM 
+            users   
+        WHERE password_token =  $1 
+            AND password_token_expiry::timestamp > NOW()    
+   `
 };

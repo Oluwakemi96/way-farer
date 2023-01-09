@@ -32,6 +32,27 @@ export const signUp = async (req, res) => {
 
 };
 
+export const forgotPassword = async (req, res) => {
+  try {
+    const { forgot_password_token, body, expTime } = req;
+    const verificationLink =  `http://explorertrips.com?token=${forgot_password_token}`;
+    const user = await AuthServices.getUserDetailsByEmail([ body.email ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${user.user_id}:::Info: successfully fetched user details forgotPassword.controllers.auth.js`);
+    await AuthServices.setForgotPasswordToken([ user.user_id, forgot_password_token, expTime ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${user.user_id}:::Info: successfully updates a user's password reset token forgotPassword.controllers.auth.js`);
+    if (config.WAYFARER_NODE_ENV === 'test') {
+      return ApiResponse.success(res, enums.FORGOT_PASSWORD, enums.HTTP_OK, forgot_password_token);
+    }
+    mails.forgotPassword(body.email, verificationLink);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${user.user_id}:::Info: successfully sends mail to user forgotPassword.controllers.auth.js`);
+
+    return ApiResponse.success(res, enums.FORGOT_PASSWORD, enums.HTTP_OK, forgot_password_token);
+  } catch (error) {
+    error.label = enums.FORGOT_PASSWORD_CONTROLLER;
+    logger.error(` password reset link failed to send::${enums.FORGOT_PASSWORD_CONTROLLER}`, error.message); 
+  }
+};
+    
 export const verifyEmail = async (req, res) => {
   try {
     await AuthServices.verifyEmail([ req.user_id ]);
@@ -53,5 +74,22 @@ export const loginClient = async (req, res) => {
   } catch (error) {
     error.label =  enums.LOGIN_CONTROLLER;
     logger.error(`Client login failed::${enums.LOGIN_CONTROLLER}`, error.message);  
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { hashedPassword, user } = req;
+    await AuthServices.resetUserPassword([ user.user_id, hashedPassword ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${user.user_id}:::Info: successfully resets user's password resetPassword.controllers.auth.js`);
+
+    if (config.WAYFARER_NODE_ENV === 'test') {
+      return ApiResponse.success(res, enums.PASSWORD_RESET, enums.HTTP_OK);
+    }
+    mails.resetPassword(user.email);
+    return ApiResponse.success(res, enums.PASSWORD_RESET, enums.HTTP_OK);
+  } catch (error) {
+    error.label = enums.RESET_PASSWORD_CONTROLLER;
+    logger.error(` password reset failed::${enums.RESET_PASSWORD_CONTROLLER}`, error.message);
   }
 };

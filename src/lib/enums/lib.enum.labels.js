@@ -2,8 +2,8 @@ import dayjs from 'dayjs';
 
 export const CURRENT_TIME_STAMP = `${dayjs().format('DD-MMM-YYYY, HH:mm:ss')}`;
 export const HASH_PASSWORD_MIDDLEWARE = 'AuthMiddleware::hashUserPassword';
-export const GENERATE_EMAIL_VERIFICATION_TOKEN = 'AuthMiddleware::generateEmailVerificationToken';
-export const SET_EMAIL_VERIFICATION_TOKEN_EXPIRY = 'AuthMiddleware::setEmailVerificationExpiry';
+export const GENERATE_VERIFICATION_TOKEN = 'AuthMiddleware::generateVerificationToken';
+export const SET_TOKEN_EXPIRY = 'AuthMiddleware::setTokenExpiry';
 export const VALIDATE_DATA_MIDDLEWARE = 'ModelMiddleware::validateData';
 export const SIGNUP_CONTROLLER = 'AuthController::signup';
 export const CHECK_EXISTING_EMAIL = 'AuthMiddleware::checkIfEmailAlreadyExist';
@@ -15,5 +15,9 @@ export const LOGIN_CONTROLLER = 'AuthController::login';
 export const VERIFY_EMAIL_CONTROLLER = 'AuthController::verifyEmail';
 export const CHECK_EMAIL_VERIFICATION_TOKEN = 'AuthController::checkIfEmailVerificationTokenIsPresentOrExpired';
 
+export const CHECK_IF_EMAIL_EXIST_MIDDLEWARE = 'AuthMiddleware::checkIfEmailExist';
+export const FORGOT_PASSWORD_CONTROLLER = 'AuthController::forgotPassword';
+export const RESET_PASSWORD_MIDDLEWARE = 'AuthMiddleware::resetPassword';
+export const RESET_PASSWORD_CONTROLLER = 'AuthController::resetPassword';
 
 

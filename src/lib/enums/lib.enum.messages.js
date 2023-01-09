@@ -15,6 +15,11 @@ export const PASSWORD_INCORRECT = 'password incorrect';
 export const LOGIN_CLIENT = 'client login successfully';
 export const TOKEN_ABSENT_OR_EXPIRED = 'Expired or invalid token';
 
+export const EMAIL_NOT_FOUND = 'email does not exist, please enter a valid mail';
+export const FORGOT_PASSWORD = 'password reset link sent successfully';
+export const INVALID_TOKEN = 'invalid or expired token';
+export const PASSWORD_RESET = 'password reset successfully';
+
 
 
 
