@@ -115,6 +115,7 @@ export const emailDoesNotExist = async (req, res, next) => {
     logger.error(`checking if email exists::${enums.EMAIL_DOES_NOT_EXIST}`, error.message);
   }
 };
+
 export const checkIfEmailVerified = async (req, res, next) => {
   try {
     const { user } = req;
@@ -127,6 +128,7 @@ export const checkIfEmailVerified = async (req, res, next) => {
     logger.error(`checking if email is verified::${enums.CHECK_EMAIL_VERIFIED}`, error.message);
   }
 };
+
 export const validateUserPassword = async (req, res, next) => {
   try {
     const { user, body } = req;
@@ -140,6 +142,7 @@ export const validateUserPassword = async (req, res, next) => {
     logger.error(`checking if passwords match::${enums.VALIDATE_PASSWORD}`, error.message);
   }
 };
+
 export const generateJwtToken = async (req, res, next) => {
   try {
     const { user } = req;
@@ -154,6 +157,7 @@ export const generateJwtToken = async (req, res, next) => {
     logger.error(`generating jwt failed::${enums.GENERATE_JWT}`, error.message);
   }
 };
+
 export const validateEmailVerificationToken = async (req, res, next) => {
   try {
     const user = await authServices.findEmailVerificationToken(req.params.emailToken);
