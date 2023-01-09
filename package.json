@@ -11,7 +11,7 @@
     "start": "nodemon --exec babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test",
-    "test": "cross-env WAYFARER_NODE_ENV=test mocha --require @babel/register test/**/ --timeout 120000 --exit",
+    "test": "cross-env WAYFARER_NODE_ENV=test mocha --require @babel/register './test/**/*.js' --timeout 120000 --exit",
     "migrate:up": "db-migrate up --config database.json",
     "migrate:down": "db-migrate down --config database.json",
     "migrate:reset": "db-migrate reset --config database.json",
@@ -48,6 +48,7 @@
     "lodash": "^4.17.21",
     "nodemailer": "^6.8.0",
     "pg-promise": "^10.15.0",
+    "sinon": "^15.0.1",
     "winston": "^3.8.2"
   },
   "devDependencies": {
