@@ -13,9 +13,28 @@ export default {
 
     `,
   findEmail: `
-        SELECT email
+        SELECT user_id,
+               first_name,
+               last_name,
+               email, 
+               is_email_verified,
+               is_admin, 
+               password
            FROM users
         WHERE email = $1
-        
+    `,
+  findEmailVerificationToken: `
+        SELECT user_id, email_token, email
+            FROM users
+        WHERE email_token = $1
+            AND email_token_expiry::timestamp > NOW()       
+    `,
+  verifyEmail: `
+        UPDATE users
+            SET is_email_verified = true,
+                email_token = null,
+                email_token_expiry = null,
+                updated_at = NOW()
+        WHERE user_id = $1    
     `
 };

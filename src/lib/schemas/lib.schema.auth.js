@@ -6,3 +6,8 @@ export const signUp = Joi.object().keys({
   last_name: Joi.string().required(),
   password: Joi.string().required().min(8)
 });
+
+export const login = Joi.object().keys({
+  email: Joi.string().email().required(),
+  password: Joi.string().required().min(8)
+});

@@ -9,11 +9,31 @@ const router = Router();
 router.post(
   '/sign_up',
   Model(Schema.signUp, 'payload'),
-  AuthMiddleware.checkIfEmailAlreadyExist,
-  AuthMiddleware.hashUserPassword,
-  AuthMiddleware.generateEmailVerificationToken,
-  AuthMiddleware.setEmailVerificationExpiry,
+  [
+    AuthMiddleware.checkIfEmailAlreadyExist,
+    AuthMiddleware.hashUserPassword,
+    AuthMiddleware.generateEmailVerificationToken,
+    AuthMiddleware.setEmailVerificationExpiry
+  ],
   AuthController.signUp
+);
+
+router.put(
+  '/verify-email/:emailToken',
+  AuthMiddleware.validateEmailVerificationToken,
+  AuthController.verifyEmail
+);
+
+router.post(
+  '/login',
+  Model(Schema.login, 'payload'),
+  [
+    AuthMiddleware.emailDoesNotExist,
+    AuthMiddleware.checkIfEmailVerified,
+    AuthMiddleware.validateUserPassword,
+    AuthMiddleware.generateJwtToken
+  ],
+  AuthController.loginClient
 );
 
 export default router;

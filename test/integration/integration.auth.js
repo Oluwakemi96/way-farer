@@ -3,7 +3,7 @@ import chaiHttp from 'chai-http';
 import 'dotenv/config';
 import app from '../../src/app';
 import enums from '../../src/lib/enums';
-import { userOneProfile, userTwoProfile
+import { userOneProfile, userTwoProfile, loginUserOne, loginUserTwo
 } from '../payloads/payload.auth';
 
 const { expect } = chai;
@@ -176,4 +176,147 @@ describe('Signup', () => {
       });
   });
 
+  it('Should verify user one email successfully', (done) => {
+    chai.request(app)
+      .put(`/api/v1/auth/verify-email/${process.env.WAYFARER_USER_ONE_VERIFICATION_TOKEN}`)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(enums.VERIFY_CLIENT_EMAIL);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it('Should verify user two email successfully', (done) => {
+    chai.request(app)
+      .put(`/api/v1/auth/verify-email/${process.env.WAYFARER_USER_TWO_VERIFICATION_TOKEN}`)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(enums.VERIFY_CLIENT_EMAIL);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if email is not sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          password: userOneProfile.password
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if email is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          password: userTwoProfile.password
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('email is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if password is not sent for user one', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          email: userOneProfile.email,
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should return error if password is not sent for user two', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(
+        {
+          email: userTwoProfile.email,
+        }
+      )
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(422);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body.message).to.equal('password is required');
+        expect(res.body.error).to.equal('UNPROCESSABLE_ENTITY');
+        expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it('Should login user one successfully', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(loginUserOne)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(enums.LOGIN_CLIENT);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        expect(res.body.data.email).to.equal('rashidats@gmail.com');
+        expect(res.body.data.is_admin).to.equal(false);
+        process.env.WAYFARER_USER_ONE_USER_ID = res.body.data.user_id;
+        process.env.WAYFARER_USER_ONE_EMAIL = res.body.data.email;
+        process.env.WAYFARER_USER_ONE_JWT_TOKEN = res.body.data.token;
+        done();
+      });
+  });
+
+  it('Should login user two successfully', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(loginUserTwo)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(enums.LOGIN_CLIENT);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        expect(res.body.data.email).to.equal('daniel@enyata.com');
+        expect(res.body.data.is_admin).to.equal(false);
+        process.env.WAYFARER_USER_ONE_USER_ID = res.body.data.user_id;
+        process.env.WAYFARER_USER_ONE_EMAIL = res.body.data.email;
+        process.env.WAYFARER_USER_ONE_JWT_TOKEN = res.body.data.token;
+        done();
+      });
+  });
 });

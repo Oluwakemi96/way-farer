@@ -7,6 +7,10 @@ export const hashPassword = (password) => {
   return hashedPassword;
 };
 
+export const comparePasswordHash = (password, hash) => {
+  return bcrypt.compare(password, hash);
+};
+
 export const generateRandomString = (size) => {
   try {
     return Crypto.randomBytes(size).toString('hex');

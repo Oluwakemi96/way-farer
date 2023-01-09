@@ -55,3 +55,84 @@ export const checkIfEmailAlreadyExist = async (req, res, next) => {
     logger.error(`checking existing email failed::${enums.CHECK_EXISTING_EMAIL}`, error.message);
   }
 };
+
+export const emailDoesNotExist = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    const user = await authServices.findEmail([ email ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user with email found emailDoesNotExist.middlewares.auth.js`);
+
+    if (!user) return ApiResponse.error(res, enums.EMAIL_DOES_NOT_EXIST, enums.HTTP_BAD_REQUEST);
+
+    req.user = user;
+    return next();
+  } catch (error) {
+    error.label = enums.EMAIL_DOES_NOT_EXIST; 
+    logger.error(`checking if email exists::${enums.EMAIL_DOES_NOT_EXIST}`, error.message);
+  }
+};
+
+export const checkIfEmailVerified = async (req, res, next) => {
+  try {
+    const { user } = req;
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user email verified checkIfEmailVerified.middlewares.auth.js`);
+
+    if (!user.is_email_verified) 
+      return ApiResponse.error(res, enums.UNVERIFIED_EMAIL, enums.HTTP_BAD_REQUEST);
+    
+
+    return next();
+  } catch (error) {
+    error.label = enums.CHECK_EMAIL_VERIFIED; 
+    logger.error(`checking if email is verified::${enums.CHECK_EMAIL_VERIFIED}`, error.message);
+  }
+};
+
+export const validateUserPassword = async (req, res, next) => {
+  try {
+    const { user, body } = req;
+    const passwordMatch = await hash.comparePasswordHash(body.password.trim(), user.password);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: password match successful validateUserPassword.middlewares.auth.js`);
+
+    if (!passwordMatch)
+      return ApiResponse.error(res, enums.PASSWORD_INCORRECT, enums.HTTP_BAD_REQUEST);
+
+    return next();
+  } catch (error) {
+    error.label = enums.VALIDATE_PASSWORD; 
+    logger.error(`checking if passwords match::${enums.VALIDATE_PASSWORD}`, error.message);
+  }
+};
+
+export const generateJwtToken = async (req, res, next) => {
+  try {
+    const { user } = req;
+    const data = { userId: user.user_id, email: user.email };
+    const token = helpers.generateJWT(data);
+
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: jwt generated successfully generateJwtToken.middlewares.auth.js`);
+
+    req.user.token = token;
+    return next();
+  } catch (error) {
+    error.label = enums.GENERATE_JWT; 
+    logger.error(`generating jwt failed::${enums.GENERATE_JWT}`, error.message);
+  }
+};
+
+export const validateEmailVerificationToken = async (req, res, next) => {
+  try {
+    const user = await authServices.findEmailVerificationToken(req.params.emailToken);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: email verification token found validateEmailVerificationToken.middlewares.auth.js`);
+
+    if (!user) {
+      return ApiResponse.error(res, enums.TOKEN_ABSENT_OR_EXPIRED, enums.HTTP_BAD_REQUEST);
+    }
+
+    req.user_id = user.user_id;
+    return next();
+  } catch (error) {
+    error.label = enums.CHECK_EMAIL_VERIFICATION_TOKEN; 
+    logger.error(`validating email verification token::${enums.CHECK_EMAIL_VERIFICATION_TOKEN}`, error.message);
+  }
+};
