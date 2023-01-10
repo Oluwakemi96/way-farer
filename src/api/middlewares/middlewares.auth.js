@@ -3,6 +3,7 @@ import * as helpers from '../../lib/utils/lib.util.helpers';
 import enums from '../../lib/enums/index';
 import * as authServices from '../services/services.auth';
 import ApiResponse from '../../lib/http/lib.http.responses';
+import config from '../../config';
 
 export const hashUserPassword = async (req, res, next) => {
   try {
@@ -146,9 +147,12 @@ export const validateUserPassword = async (req, res, next) => {
 export const generateJwtToken = async (req, res, next) => {
   try {
     const { user } = req;
-    const data = { userId: user.user_id, email: user.email };
+    const data = { 
+      userId: user.user_id, 
+      email: user.email, 
+      is_admin: user.is_admin 
+    };
     const token = helpers.generateJWT(data);
-    console.log('token', token);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: jwt generated successfully generateJwtToken.middlewares.auth.js`);
     req.user.token = token;
     return next();
@@ -172,8 +176,64 @@ export const validateEmailVerificationToken = async (req, res, next) => {
     logger.error(`validating email verification token::${enums.CHECK_EMAIL_VERIFICATION_TOKEN}`, error.message);
   }
 };
+
+const checkAuthorizationToken = (authorization) => {
+  let bearerToken = null;
+
+  if (authorization) {
+    const token = authorization.split(' ')[1];
+    bearerToken = token || authorization;
+  }
+
+  return bearerToken;
+};
   
+const checkToken = (req) => {
+  const {
+    headers: { authorization }
+  } = req; 
+  const bearerToken = checkAuthorizationToken(authorization);
+  logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: authentication token checked checkToken.middlewares.auth.js`);
+
+  return req.body.refreshToken
+    ? req.body.refreshToken
+    : bearerToken ||
+        req.headers['x-access-token'] ||
+        req.headers.token ||
+        req.body.token;
+};
+
+export const authenticate = async (req, res, next) => {
+  const token = checkToken(req);
+  logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user authenticated authenticate.middlewares.auth.js`);
+
+  if (!token) {
+    return ApiResponse.error(res, enums.TOKEN_ERROR, enums.HTTP_UNPROCESSABLE_ENTITY);
+  }
+
+  try {
+    const decoded = helpers.verifyToken(token, config.WAYFARER_JWT_SECRET_KEY);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: authentication token decoded authenticate.middlewares.auth.js`);
+
+    req.data = decoded; 
+
+    next();
+  } catch (error) {
+    error.label = enums.CHECK_USER_AUTH;
+    logger.error(`user authentication failed::${enums.CHECK_USER_AUTH}`, error.message);
+  }
+};
+
+export const isAdmin = async (req, res, next) => {
+  const { is_admin } = req.data;
+
+  if (!is_admin) {
+    return ApiResponse.error(res, enums.ROLE_NOT_SUFFICIENT, enums.HTTP_FORBIDDEN);
+  }
+  next();
+};
   
+
   
   
   

@@ -454,6 +454,7 @@ describe('forgot password', () => {
         done();
       });
   });
+
   it('Should return error if email is not sent for user one', (done) => {
     chai.request(app)
       .post('/api/v1/auth/forgot_password')
@@ -467,6 +468,7 @@ describe('forgot password', () => {
         done();
       });
   });
+  
   it('Should return error if invalid email is sent for user one', (done) => {
     chai.request(app)
       .post('/api/v1/auth/forgot_password')

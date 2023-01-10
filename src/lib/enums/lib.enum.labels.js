@@ -14,10 +14,11 @@ export const GENERATE_JWT = 'AuthMiddleware::generateJwt';
 export const LOGIN_CONTROLLER = 'AuthController::login';
 export const VERIFY_EMAIL_CONTROLLER = 'AuthController::verifyEmail';
 export const CHECK_EMAIL_VERIFICATION_TOKEN = 'AuthController::checkIfEmailVerificationTokenIsPresentOrExpired';
-
+export const CHECK_USER_AUTH = 'AuthController::checkIfUserIsAuthenticated';
 export const CHECK_IF_EMAIL_EXIST_MIDDLEWARE = 'AuthMiddleware::checkIfEmailExist';
 export const FORGOT_PASSWORD_CONTROLLER = 'AuthController::forgotPassword';
 export const RESET_PASSWORD_MIDDLEWARE = 'AuthMiddleware::resetPassword';
 export const RESET_PASSWORD_CONTROLLER = 'AuthController::resetPassword';
+export const REGISTER_BUS_CONTROLLER = 'AdminController::registerBus';
 
 
