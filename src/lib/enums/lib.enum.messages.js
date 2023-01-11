@@ -20,6 +20,7 @@ export const FORGOT_PASSWORD = 'password reset link sent successfully';
 export const INVALID_TOKEN = 'invalid or expired token';
 export const PASSWORD_RESET = 'password reset successfully';
 export const REGISTER_BUS = 'bus registered successfully';
+export const CREATE_TRIP = 'trip created successfully';
 export const ROLE_NOT_SUFFICIENT =  'Role not sufficient to perform action';
 
 
