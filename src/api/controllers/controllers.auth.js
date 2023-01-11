@@ -65,12 +65,12 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
-export const loginClient = async (req, res) => {
+export const loginUser = async (req, res) => {
   try {
     const user = _.pick(req.user, userDetails);
     logger.info(`${enums.CURRENT_TIME_STAMP}, ${user}:::Info: successfully logged in client loginClient.controllers.auth.js`);
 
-    return ApiResponse.success(res, enums.LOGIN_CLIENT, enums.HTTP_OK, user);
+    return ApiResponse.success(res, enums.LOGIN_USER, enums.HTTP_OK, user);
   } catch (error) {
     error.label =  enums.LOGIN_CONTROLLER;
     logger.error(`Client login failed::${enums.LOGIN_CONTROLLER}`, error.message);  

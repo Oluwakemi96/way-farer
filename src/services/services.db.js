@@ -1,8 +1,10 @@
 import { db } from '../config/db';
 import authQuery from '../api/queries/queries.auth';
+import adminQuery from '../api/queries/queries.admin';
 
 export const queries = {
-  authQuery
+  authQuery,
+  adminQuery
 };
 
 export default {

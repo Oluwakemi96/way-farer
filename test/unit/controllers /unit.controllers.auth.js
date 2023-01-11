@@ -38,7 +38,7 @@ describe('', () => {
 
   it('should call user login', async() => {
     const req = { user: undefined };
-    await AuthController.loginClient(req, res, next);
+    await AuthController.loginUser(req, res, next);
     expect(res.code).to.equal(500);
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
   });
