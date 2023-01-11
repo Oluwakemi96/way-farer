@@ -21,9 +21,14 @@ export default {
         VALUES ($1, $2, $3, $4, $5)
         RETURNING *
     `,
-  findBusByBusId: `
-        SELECT available_seats
-            FROM buses
-        WHERE bus_id = $1
+  findTrip: `
+        SELECT trip_id
+        FROM trips
+        WHERE trip_id = $1
+`,
+  cancelTrip: `
+        UPDATE trips
+        SET trips_status = 'cancelled'
+        WHERE trip_id = $1
     `
 };

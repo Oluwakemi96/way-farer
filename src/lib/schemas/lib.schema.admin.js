@@ -27,3 +27,7 @@ export const createTrip = Joi.object().keys({
   trip_date: Joi.date().format('YYYY-MM-DD').required(),
   fare: Joi.number().required()
 });
+
+export const tripId = Joi.object().keys({
+  tripId: Joi.string().required()
+});

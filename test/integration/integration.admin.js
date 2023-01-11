@@ -157,6 +157,7 @@ describe("Admin Routes", () => {
         expect(res.body.data.destination).to.equal("Kano");
         expect(res.body.data.trip_date).to.equal("2023-01-16T23:00:00.000Z");
         expect(res.body.data.fare).to.equal(145.221);
+        process.env.WAYFARER_TRIP_ID = res.body.data.trip_id
         done();
       });
   });
@@ -290,6 +291,22 @@ describe("Admin Routes", () => {
         expect(res.body.message).to.equal("trip_date must be in YYYY-MM-DD format");
         expect(res.body.error).to.equal("UNPROCESSABLE_ENTITY");
         expect(res.body.status).to.equal(enums.ERROR_STATUS);
+        done();
+      });
+  });
+
+  it("Should cancel a trip successfully", (done) => {
+    chai
+      .request(app)
+      .put(`/api/v1/admin/cancel-trip/${process.env.WAYFARER_TRIP_ID}`)
+      .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property("message");
+        expect(res.body).to.have.property("status");
+        expect(res.body).to.have.property("data");
+        expect(res.body.message).to.equal(enums.CANCEL_TRIP);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
       });
   });
