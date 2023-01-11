@@ -1,1 +1,1 @@
-DROP TYPE IF EXISTS trip_status;
+ALTER TABLE trips DROP column IF EXISTS available_seats CASCADE;

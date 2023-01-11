@@ -1,5 +1,5 @@
 export default {
-    registerBus: `
+  registerBus: `
         INSERT INTO buses(
             number_plate,
             manufacturer,
@@ -10,19 +10,18 @@ export default {
         VALUES ($1, $2, $3, $4, $5)
         RETURNING *
     `,
-    createTrip: `
+  createTrip: `
         INSERT INTO trips (
             bus_id,
             origin,
             destination,
             trip_date,
-            fare,
-            available_seats,
+            fare
         )
-        VALUES ($1, $2, $3, $4, $5, $6)
-        RETURNONG *
+        VALUES ($1, $2, $3, $4, $5)
+        RETURNING *
     `,
-    findBusByBusId: `
+  findBusByBusId: `
         SELECT available_seats
             FROM buses
         WHERE bus_id = $1
