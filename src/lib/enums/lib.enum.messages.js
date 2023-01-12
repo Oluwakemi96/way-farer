@@ -23,7 +23,13 @@ export const REGISTER_BUS = 'bus registered successfully';
 export const CREATE_TRIP = 'trip created successfully';
 export const CANCEL_TRIP = 'trip cancelled successfully';
 export const TRIP_NOT_FOUND = 'trip not found';
+export const TRIP_UNAVAILABLE = 'trip no longer available';
+export const BUS_NOT_FOUND = 'bus not found';
+export const BUS_UNAVAILABLE = 'bus unavailable for use';
+export const SEAT_UNAVAILABLE = 'seat unavailable';
+export const BUS_FILLED = 'all seats booked';
 export const ROLE_NOT_SUFFICIENT =  'Role not sufficient to perform action';
+export const BOOK_TRIP = 'trip booked successfully';
 
 
 

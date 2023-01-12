@@ -31,3 +31,9 @@ export const createTrip = Joi.object().keys({
 export const tripId = Joi.object().keys({
   tripId: Joi.string().required()
 });
+
+export const bookTrip = Joi.object().keys({
+  trip_id: Joi.string().required(),
+  bus_id: Joi.string().required(),
+  seat_number: Joi.number().min(1)
+});

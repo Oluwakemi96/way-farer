@@ -19,9 +19,15 @@ export const CHECK_IF_EMAIL_EXIST_MIDDLEWARE = 'AuthMiddleware::checkIfEmailExis
 export const FORGOT_PASSWORD_CONTROLLER = 'AuthController::forgotPassword';
 export const RESET_PASSWORD_MIDDLEWARE = 'AuthMiddleware::resetPassword';
 export const RESET_PASSWORD_CONTROLLER = 'AuthController::resetPassword';
-export const REGISTER_BUS_CONTROLLER = 'AdminController::registerBus';
-export const CREATE_TRIP_CONTROLLER = 'AdminController::createTrip';
-export const CHECK_IF_TRIP_EXISTS_CONTROLLER = 'AdminController::checkIfTripExists';
-export const CANCEL_TRIP_CONTROLLER = 'AdminController::cancelTrip';
+export const REGISTER_BUS_CONTROLLER = 'TripController::registerBus';
+export const BOOK_TRIP_CONTROLLER = 'TripController::bookTrip';
+export const CREATE_TRIP_CONTROLLER = 'TripController::createTrip';
+export const CHECK_IF_TRIP_EXISTS = 'TripController::checkIfTripExists';
+export const CHECK_IF_TRIP_AVAILABLE = 'TripController::checkTripStatus';
+export const CHECK_IF_BUS_EXISTS = 'TripController::checkIfBusExists';
+export const CHECK_IF_BUS_AVAILABLE = 'TripController::checkBusAvailability';
+export const CHECK_IF_SEAT_AVAILABLE = 'TripController::checkSeatAvailability';
+export const CHECK_IF_BUS_FILLED = 'TripController::checkIfBusIsFilled';
+export const CANCEL_TRIP_CONTROLLER = 'TripController::cancelTrip';
 
 
