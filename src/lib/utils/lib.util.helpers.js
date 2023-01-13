@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 export const generateJWT = (data) => {
   return jwt.sign(data, config.WAYFARER_JWT_SECRET_KEY, {
-    expiresIn: '1d'
+    expiresIn: '1m'
   });
 };
 

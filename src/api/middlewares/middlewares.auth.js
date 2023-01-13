@@ -220,7 +220,8 @@ export const authenticate = async (req, res, next) => {
     next();
   } catch (error) {
     error.label = enums.CHECK_USER_AUTH;
-    logger.error(`user authentication failed::${enums.CHECK_USER_AUTH}`, error.message);
+    logger.error(`user authentication failed::${enums.CHECK_USER_AUTH}::::${error.message}`);
+    return res.status(enums.HTTP_BAD_REQUEST).json({ message: error.message });
   }
 };
 
