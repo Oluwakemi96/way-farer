@@ -47,5 +47,23 @@ describe("", () => {
       expect(res.code).to.equal(500);
       expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
     });
+    it("should call fetch all bookings", async () => {
+      const req = null;
+      await TripController.fetchAllBookings(req, res);
+      expect(res.code).to.equal(500);
+      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+    });
+    it("should call fetch all user bookings", async () => {
+      const req = { data: undefined };
+      await TripController.fetchAllUserBookings(req, res, next);
+      expect(res.code).to.equal(500);
+      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+    });
+    it("should call fetch all trip bookings", async () => {
+      const req = { params: undefined };
+      await TripController.fetchTripBookings(req, res, next);
+      expect(res.code).to.equal(500);
+      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+    });
   });
 });

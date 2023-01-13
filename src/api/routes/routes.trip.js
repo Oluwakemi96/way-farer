@@ -8,6 +8,7 @@ import * as TripController from '../controllers/controllers.trip';
 const router = Router();
 
 router.use(AuthMiddleware.authenticate);
+router.get('/fetch-bookings', TripController.fetchAllUserBookings);
 router.post(
   '/book-trip',
   Model(Schema.bookTrip, 'payload'),
@@ -20,6 +21,8 @@ router.post(
 );
 
 router.use(AuthMiddleware.isAdmin);
+router.get('/fetch-trip-bookings', TripController.fetchAllBookings);
+router.get('/fetch-trip-bookings/:trip_id', TripController.fetchTripBookings);
 router.post(
   '/register-bus',
   Model(Schema.registerBus, 'payload'),
