@@ -144,7 +144,12 @@ export const fetchAllUserBookings = async (req, res) => {
   try {
     const { userId } = req.data;
     const { page, limit, tripId } = req.query;
-    const bookings = await TripServices.fetchAllUserBookings([ page, limit, userId, tripId ]);
+    const bookings = await TripServices.fetchAllUserBookings([
+      page,
+      limit,
+      userId,
+      tripId
+    ]);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${bookings.user_id}:::Info: successfully fetched all bookings fetchAllUserBookings.controllers.trip.js`
     );
@@ -159,6 +164,25 @@ export const fetchAllUserBookings = async (req, res) => {
     error.label = enums.FETCH_USER_BOOKINGS_CONTROLLER;
     logger.error(
       `fetch user bookings failed::${enums.FETCH_USER_BOOKINGS_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+};
+
+export const deleteBooking = async (req, res) => {
+  try {
+    const { userId } = req.data;
+    const { bookingId } = req.params;
+    await TripServices.deleteBooking([ userId, bookingId ]);
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, :::Info: successfully deleted booking deleteBooking.controllers.trip.js`
+    );
+
+    return ApiResponse.success(res, enums.DELETE_BOOKING, enums.HTTP_OK);
+  } catch (error) {
+    error.label = enums.DELETE_BOOKING_CONTROLLER;
+    logger.error(
+      `delete booking failed::${enums.DELETE_BOOKING_CONTROLLER}::::${error.message}`
     );
     return error;
   }

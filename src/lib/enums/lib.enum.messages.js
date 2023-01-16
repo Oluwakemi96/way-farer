@@ -32,6 +32,8 @@ export const ROLE_NOT_SUFFICIENT =  'Role not sufficient to perform action';
 export const BOOK_TRIP = 'trip booked successfully';
 export const FETCH_ALL_BOOKINGS = 'bookings fetched successfully';
 export const FETCH_ALL_TRIPS = 'trips fetched successfully';
+export const BOOKING_NOT_FOUND = 'booking not found';
+export const DELETE_BOOKING = 'booking deleted successfully';
 
 
 
