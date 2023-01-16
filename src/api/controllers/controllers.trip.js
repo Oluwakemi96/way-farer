@@ -95,6 +95,28 @@ export const bookTrip = async (req, res) => {
   }
 };
 
+export const fetchAllTrips = async (req, res) => {
+  try {
+    const trips = await TripServices.fetchAllTrips();
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, :::Info: successfully fetched all trips fetchAllTrips.controllers.trip.js`
+    );
+
+    return ApiResponse.success(
+      res,
+      enums.FETCH_ALL_TRIPS,
+      enums.HTTP_OK,
+      trips
+    );
+  } catch (error) {
+    error.label = enums.FETCH_TRIPS_CONTROLLER;
+    logger.error(
+      `fetch trips failed::${enums.FETCH_TRIPS_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+};
+
 export const fetchAllBookings = async (req, res) => {
   try {
     const { page, limit, tripId } = req.query;

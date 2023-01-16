@@ -74,11 +74,6 @@ export default {
         FROM buses
         WHERE bus_id = $1
   `,
-  fetchTripBookings: `
-        SELECT * FROM bookings
-        WHERE trip_id = $1
-        OFFSET $1 LIMIT $2
-  `,
   fetchAllBookings: `
         SELECT * FROM bookings
         WHERE (trip_id = $3 OR $3 IS NULL)
@@ -96,5 +91,8 @@ export default {
   fetchUserBookingsCount: `
         SELECT COUNT(id) FROM bookings
         WHERE user_id = $3 AND (trip_id = $4 OR $4 IS NULL)
+  `,
+  fetchAllTrips: `
+        SELECT * FROM trips
   `
 };
