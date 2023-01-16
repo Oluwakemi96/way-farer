@@ -21,6 +21,8 @@ export const INVALID_TOKEN = 'invalid or expired token';
 export const PASSWORD_RESET = 'password reset successfully';
 export const REGISTER_BUS = 'bus registered successfully';
 export const CREATE_TRIP = 'trip created successfully';
+export const CANCEL_TRIP = 'trip cancelled successfully';
+export const TRIP_NOT_FOUND = 'trip not found';
 export const ROLE_NOT_SUFFICIENT =  'Role not sufficient to perform action';
 
 

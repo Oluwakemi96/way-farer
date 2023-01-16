@@ -28,3 +28,17 @@ export const createTrip = async (req, res) => {
     return error;
   }
 };
+
+export const cancelTrip = async (req, res) => {
+  try {
+    const { trip_id } = req.params;
+    await AdminServices.cancelTrip([ trip_id ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${trip_id}:::Info: successfully cancelled a trip cancelTrip.controllers.admin.js`);
+    
+    return ApiResponse.success(res, enums.CANCEL_TRIP, enums.HTTP_OK);
+  } catch (error) {
+    error.label = enums.CANCEL_TRIP_CONTROLLER;
+    logger.error(`trip cancellation failed::${enums.CANCEL_TRIP_CONTROLLER}::::${error.message}`); 
+    return error;
+  }
+};

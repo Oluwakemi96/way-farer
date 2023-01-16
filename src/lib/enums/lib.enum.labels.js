@@ -21,5 +21,7 @@ export const RESET_PASSWORD_MIDDLEWARE = 'AuthMiddleware::resetPassword';
 export const RESET_PASSWORD_CONTROLLER = 'AuthController::resetPassword';
 export const REGISTER_BUS_CONTROLLER = 'AdminController::registerBus';
 export const CREATE_TRIP_CONTROLLER = 'AdminController::createTrip';
+export const CHECK_IF_TRIP_EXISTS_CONTROLLER = 'AdminController::checkIfTripExists';
+export const CANCEL_TRIP_CONTROLLER = 'AdminController::cancelTrip';
 
 
