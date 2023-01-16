@@ -14,4 +14,10 @@ router.post(
   AdminController.registerBus
 );
 
+router.post(
+  '/create-trip',
+  Model(Schema.createTrip, 'payload'),
+  AdminController.createTrip
+);
+
 export default router;

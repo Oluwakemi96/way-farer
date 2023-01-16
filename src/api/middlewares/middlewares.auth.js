@@ -208,7 +208,7 @@ export const authenticate = async (req, res, next) => {
   logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user authenticated authenticate.middlewares.auth.js`);
 
   if (!token) {
-    return ApiResponse.error(res, enums.TOKEN_ERROR, enums.HTTP_UNPROCESSABLE_ENTITY);
+    return ApiResponse.error(res, enums.TOKEN_ERROR, enums.HTTP_FORBIDDEN);
   }
 
   try {

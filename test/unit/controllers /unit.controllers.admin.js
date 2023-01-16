@@ -27,6 +27,13 @@ describe('', () => {
       expect(res.code).to.equal(500);
       expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
+
+    it('should call create trip', async() => {
+      const req = { body: undefined };
+      await AdminController.createTrip(req, res, next);
+      expect(res.code).to.equal(500);
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
+    });
   });
 });
 

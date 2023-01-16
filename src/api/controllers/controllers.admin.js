@@ -11,20 +11,20 @@ export const registerBus = async (req, res) => {
     return ApiResponse.success(res, enums.REGISTER_BUS, enums.HTTP_CREATED, registeredBus);
   } catch (error) {
     error.label = enums.REGISTER_BUS_CONTROLLER;
-    logger.error(`Bus registration failed::${enums.REGISTER_BUS_CONTROLLER}`, error.message);  
+    logger.error(`Bus registration failed::${enums.REGISTER_BUS_CONTROLLER}::::${error.message}`); 
+    return error; 
   }
 };
 
 export const createTrip = async (req, res) => {
   try {
-    const { bus_id } = req.body;
-    const available_seats = await AdminServices.findBusByBusId([bus_id]);
-    const createdTrip = await AdminServices.createTrip(AdminPayloads.createTrip(req.body), available_seats);
+    const createdTrip = await AdminServices.createTrip(AdminPayloads.createTrip(req.body));
     logger.info(`${enums.CURRENT_TIME_STAMP}, ${createdTrip.trip_id}:::Info: successfully created a trip createTrip.controllers.admin.js`);
     
-    return ApiResponse.success(res, enums.CREATE_TRIP, enums.HTTP_CREATED, registeredBus);
+    return ApiResponse.success(res, enums.CREATE_TRIP, enums.HTTP_CREATED, createdTrip);
   } catch (error) {
     error.label = enums.CREATE_TRIP_CONTROLLER;
-    logger.error(`Bus registration failed::${enums.CREATE_TRIP_CONTROLLER}`, error.message);  
+    logger.error(`trip creation failed::${enums.CREATE_TRIP_CONTROLLER}::::${error.message}`); 
+    return error;
   }
 };
