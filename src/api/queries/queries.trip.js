@@ -73,5 +73,16 @@ export default {
         SELECT capacity
         FROM buses
         WHERE bus_id = $1
+  `,
+  fetchTripBookings: `
+        SELECT * FROM bookings
+        WHERE trip_id = $1
+  `,
+  fetchAllBookings: `
+        SELECT * FROM bookings
+  `,
+  fetchAllUserBookings: `
+        SELECT * FROM bookings
+        WHERE user_id = $1
   `
 };

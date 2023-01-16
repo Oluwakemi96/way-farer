@@ -80,11 +80,84 @@ export const bookTrip = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${bookedTrip.trip_id}:::Info: successfully booked trip bookTrip.controllers.trip.js`
     );
 
-    return ApiResponse.success(res, enums.BOOK_TRIP, enums.HTTP_CREATED, bookedTrip);
+    return ApiResponse.success(
+      res,
+      enums.BOOK_TRIP,
+      enums.HTTP_CREATED,
+      bookedTrip
+    );
   } catch (error) {
     error.label = enums.BOOK_TRIP_CONTROLLER;
     logger.error(
       `Trip booking failed::${enums.BOOK_TRIP_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+};
+
+export const fetchAllBookings = async (req, res) => {
+  try {
+    const bookings = await TripServices.fetchAllBookings();
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, ${bookings.trip_id}:::Info: successfully fetched bookings for trip fetchAllBookings.controllers.trip.js`
+    );
+
+    return ApiResponse.success(
+      res,
+      enums.FETCH_ALL_BOOKINGS,
+      enums.HTTP_OK,
+      bookings
+    );
+  } catch (error) {
+    error.label = enums.FETCH_ALL_BOOKINGS_CONTROLLER;
+    logger.error(
+      `fetch trip bookings failed::${enums.FETCH_ALL_BOOKINGS_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+};
+
+export const fetchTripBookings = async (req, res) => {
+  try {
+    const { trip_id } = req.params;
+    const bookings = await TripServices.fetchTripBookings([ trip_id ]);
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, ${bookings.trip_id}:::Info: successfully fetched bookings for trip fetchAllBookings.controllers.trip.js`
+    );
+
+    return ApiResponse.success(
+      res,
+      enums.FETCH_ALL_BOOKINGS,
+      enums.HTTP_OK,
+      bookings
+    );
+  } catch (error) {
+    error.label = enums.FETCH_ALL_BOOKINGS_CONTROLLER;
+    logger.error(
+      `fetch trip bookings failed::${enums.FETCH_ALL_BOOKINGS_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+};
+
+export const fetchAllUserBookings = async (req, res) => {
+  try {
+    const { userId } = req.data;
+    const bookings = await TripServices.fetchAllUserBookings([ userId ]);
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, ${bookings.user_id}:::Info: successfully fetched all bookings fetchAllUserBookings.controllers.trip.js`
+    );
+
+    return ApiResponse.success(
+      res,
+      enums.FETCH_ALL_BOOKINGS,
+      enums.HTTP_OK,
+      bookings
+    );
+  } catch (error) {
+    error.label = enums.FETCH_USER_BOOKINGS_CONTROLLER;
+    logger.error(
+      `fetch user bookings failed::${enums.FETCH_USER_BOOKINGS_CONTROLLER}::::${error.message}`
     );
     return error;
   }
