@@ -9,6 +9,7 @@ const router = Router();
 
 router.use(AuthMiddleware.authenticate);
 router.get('/fetch-bookings', TripController.fetchAllUserBookings);
+router.get('/fetch-trips', TripController.fetchAllTrips);
 router.post(
   '/book-trip',
   Model(Schema.bookTrip, 'payload'),

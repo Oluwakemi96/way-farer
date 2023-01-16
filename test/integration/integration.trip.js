@@ -481,7 +481,6 @@ describe("Trip Routes", () => {
       })
       .set({ Authorization: process.env.WAYFARER_USER_ONE_JWT_TOKEN })
       .end((err, res) => {
-        console.log(res.body)
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property("message");
         expect(res.body).to.have.property("status");
@@ -525,6 +524,38 @@ describe("Trip Routes", () => {
         expect(res.body).to.have.property("data");
         expect(res.body.data).to.have.property("count");
         expect(res.body.message).to.equal(enums.FETCH_ALL_BOOKINGS);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it("Should fetch all trips with admin token", (done) => {
+    chai
+      .request(app)
+      .get(`/api/v1/trip/fetch-trips`)
+      .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property("message");
+        expect(res.body).to.have.property("status");
+        expect(res.body).to.have.property("data");
+        expect(res.body.message).to.equal(enums.FETCH_ALL_TRIPS);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it("Should fetch all trips with client token", (done) => {
+    chai
+      .request(app)
+      .get(`/api/v1/trip/fetch-trips`)
+      .set({ Authorization: process.env.WAYFARER_USER_ONE_JWT_TOKEN })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property("message");
+        expect(res.body).to.have.property("status");
+        expect(res.body).to.have.property("data");
+        expect(res.body.message).to.equal(enums.FETCH_ALL_TRIPS);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
       });

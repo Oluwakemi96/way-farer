@@ -60,4 +60,10 @@ describe("", () => {
       expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
     });
   });
+    it("should call fetch all trips", async () => {
+      const req = { data: undefined };
+      await TripController.fetchAllTrips(req, res, next);
+      expect(res.code).to.equal(500);
+      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+    });
 });
