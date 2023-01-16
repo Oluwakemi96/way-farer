@@ -77,12 +77,24 @@ export default {
   fetchTripBookings: `
         SELECT * FROM bookings
         WHERE trip_id = $1
+        OFFSET $1 LIMIT $2
   `,
   fetchAllBookings: `
         SELECT * FROM bookings
+        WHERE (trip_id = $3 OR $3 IS NULL)
+        OFFSET $1 LIMIT $2
+  `,
+  fetchBookingsCount: `
+        SELECT COUNT(id) FROM bookings
+        WHERE (trip_id = $3 OR $3 IS NULL)
   `,
   fetchAllUserBookings: `
         SELECT * FROM bookings
-        WHERE user_id = $1
+        WHERE user_id = $3 AND (trip_id = $4 OR $4 IS NULL)
+        OFFSET $1 LIMIT $2
+  `,
+  fetchUserBookingsCount: `
+        SELECT COUNT(id) FROM bookings
+        WHERE user_id = $3 AND (trip_id = $4 OR $4 IS NULL)
   `
 };

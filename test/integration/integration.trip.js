@@ -472,16 +472,21 @@ describe("Trip Routes", () => {
       });
   });
 
-  it("Should fetch all bookings", (done) => {
+  it("Should fetch all user bookings on a given tripId", (done) => {
     chai
       .request(app)
       .get("/api/v1/trip/fetch-bookings")
+      .query({
+        tripId: process.env.WAYFARER_TRIP_ID,
+      })
       .set({ Authorization: process.env.WAYFARER_USER_ONE_JWT_TOKEN })
       .end((err, res) => {
+        console.log(res.body)
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property("message");
         expect(res.body).to.have.property("status");
         expect(res.body).to.have.property("data");
+        expect(res.body.data).to.have.property("count");
         expect(res.body.message).to.equal(enums.FETCH_ALL_BOOKINGS);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
@@ -491,13 +496,14 @@ describe("Trip Routes", () => {
   it("Should fetch all bookings", (done) => {
     chai
       .request(app)
-      .get("/api/v1/trip/fetch-trip-bookings")
+      .get("/api/v1/trip/admin/fetch-bookings")
       .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
       .end((err, res) => {
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property("message");
         expect(res.body).to.have.property("status");
         expect(res.body).to.have.property("data");
+        expect(res.body.data).to.have.property("count");
         expect(res.body.message).to.equal(enums.FETCH_ALL_BOOKINGS);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
@@ -507,13 +513,17 @@ describe("Trip Routes", () => {
   it("Should fetch bookings of a particular trip", (done) => {
     chai
       .request(app)
-      .get(`/api/v1/trip/fetch-trip-bookings/${process.env.WAYFARER_TRIP_ID}`)
+      .get(`/api/v1/trip/admin/fetch-bookings`)
+      .query({
+        tripId: process.env.WAYFARER_TRIP_ID,
+      })
       .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
       .end((err, res) => {
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property("message");
         expect(res.body).to.have.property("status");
         expect(res.body).to.have.property("data");
+        expect(res.body.data).to.have.property("count");
         expect(res.body.message).to.equal(enums.FETCH_ALL_BOOKINGS);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();

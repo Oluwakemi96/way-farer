@@ -21,8 +21,7 @@ router.post(
 );
 
 router.use(AuthMiddleware.isAdmin);
-router.get('/fetch-trip-bookings', TripController.fetchAllBookings);
-router.get('/fetch-trip-bookings/:trip_id', TripController.fetchTripBookings);
+router.get('/admin/fetch-bookings', TripController.fetchAllBookings);
 router.post(
   '/register-bus',
   Model(Schema.registerBus, 'payload'),

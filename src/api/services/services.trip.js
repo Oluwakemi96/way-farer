@@ -12,6 +12,18 @@ export const checkTripStatus = (payload) => DB.singleTransact('checkTripStatus',
 export const checkSeatAvailability = (payload) => DB.singleTransact('checkSeatAvailability', payload, enums.TRIP_QUERY);
 export const countFilledSeats = (payload) => DB.singleTransact('countFilledSeats', payload, enums.TRIP_QUERY);
 export const checkBusCapacity = (payload) => DB.singleTransact('checkBusCapacity', payload, enums.TRIP_QUERY);
-export const fetchAllBookings = (payload) => DB.transact('fetchAllBookings', payload, enums.TRIP_QUERY);
 export const fetchTripBookings = (payload) => DB.transact('fetchTripBookings', payload, enums.TRIP_QUERY);
-export const fetchAllUserBookings = (payload) => DB.transact('fetchAllUserBookings', payload, enums.TRIP_QUERY);
+export const fetchAllBookings = async (payload) => {
+  const [ bookings, [ { count } ]  ] = await Promise.all([
+    DB.transact('fetchAllBookings', [ ...payload ], enums.TRIP_QUERY),
+    DB.transact('fetchBookingsCount', [ ...payload ], enums.TRIP_QUERY)
+  ]);
+  return { count, bookings};
+};
+export const fetchAllUserBookings = async (payload) => {
+  const [ bookings, [ { count } ]  ] = await Promise.all([
+    DB.transact('fetchAllUserBookings', [ ...payload ], enums.TRIP_QUERY),
+    DB.transact('fetchUserBookingsCount', [ ...payload ], enums.TRIP_QUERY)
+  ]);
+  return { count, bookings};
+};
