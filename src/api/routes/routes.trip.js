@@ -20,7 +20,11 @@ router.post(
   ],
   TripController.bookTrip
 );
-
+router.delete(
+  '/delete-booking/:bookingId',
+  TripMiddleware.checkIfBookingExists,
+  TripController.deleteBooking
+);
 router.use(AuthMiddleware.isAdmin);
 router.get('/admin/fetch-bookings', TripController.fetchAllBookings);
 router.post(

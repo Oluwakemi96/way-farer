@@ -25,6 +25,29 @@ export const checkIfTripExists = async (req, res, next) => {
   }
 };
 
+export const checkIfBookingExists = async (req, res, next) => {
+  try {
+    const { bookingId } = req.params;
+    const booking = await Trip.findBooking([ bookingId ]);
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, :::Info: successfully found booking checkIfTripExists.middlewares.trip.js`
+    );
+
+    if (!booking)
+      return ApiResponse.error(
+        res,
+        enums.BOOKING_NOT_FOUND,
+        enums.HTTP_BAD_REQUEST
+      );
+    return next();
+  } catch (error) {
+    error.label = enums.CHECK_IF_BOOKING_EXISTS;
+    logger.error(
+      `checking booking failed::${enums.CHECK_IF_BOOKING_EXISTS}::::${error.message}`
+    );
+  }
+};
+
 export const checkTripStatus = async (req, res, next) => {
   try {
     const { trip_id } = req.body;

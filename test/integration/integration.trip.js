@@ -512,7 +512,7 @@ describe("Trip Routes", () => {
   it("Should fetch bookings of a particular trip", (done) => {
     chai
       .request(app)
-      .get(`/api/v1/trip/admin/fetch-bookings`)
+      .get('/api/v1/trip/admin/fetch-bookings')
       .query({
         tripId: process.env.WAYFARER_TRIP_ID,
       })
@@ -532,7 +532,7 @@ describe("Trip Routes", () => {
   it("Should fetch all trips with admin token", (done) => {
     chai
       .request(app)
-      .get(`/api/v1/trip/fetch-trips`)
+      .get('/api/v1/trip/fetch-trips')
       .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
       .end((err, res) => {
         expect(res.statusCode).to.equal(enums.HTTP_OK);
@@ -548,7 +548,7 @@ describe("Trip Routes", () => {
   it("Should fetch all trips with client token", (done) => {
     chai
       .request(app)
-      .get(`/api/v1/trip/fetch-trips`)
+      .get('/api/v1/trip/fetch-trips')
       .set({ Authorization: process.env.WAYFARER_USER_ONE_JWT_TOKEN })
       .end((err, res) => {
         expect(res.statusCode).to.equal(enums.HTTP_OK);
@@ -560,4 +560,21 @@ describe("Trip Routes", () => {
         done();
       });
   });
+
+  it("Should delete user booking", (done) => {
+    chai
+      .request(app)
+      .delete(`/api/v1/trip/delete-booking/${process.env.WAYFARER_BOOKING_ID}`)
+      .set({ Authorization: process.env.WAYFARER_USER_ONE_JWT_TOKEN })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property("message");
+        expect(res.body).to.have.property("status");
+        expect(res.body).to.have.property("data");
+        expect(res.body.message).to.equal(enums.DELETE_BOOKING);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
 });
