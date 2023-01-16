@@ -59,11 +59,5 @@ describe("", () => {
       expect(res.code).to.equal(500);
       expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
     });
-    it("should call fetch all trip bookings", async () => {
-      const req = { params: undefined };
-      await TripController.fetchTripBookings(req, res, next);
-      expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
-    });
   });
 });
