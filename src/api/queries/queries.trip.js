@@ -84,8 +84,18 @@ export default {
       WHERE (trip_id = $3 OR $3 IS NULL)
   `,
   fetchAllUserBookings: `
-      SELECT * FROM bookings
-      WHERE user_id = $3 AND (trip_id = $4 OR $4 IS NULL)
+      SELECT 
+        booking_id, 
+        b.trip_id, 
+        seat_number, 
+        t.bus_id, 
+        trip_date, 
+        fare, 
+        trips_status, 
+        b.created_on 
+      FROM bookings b
+      LEFT JOIN trips t ON t.trip_id = b.trip_id
+      WHERE user_id = $3 AND (b.trip_id = $4 OR $4 IS NULL)
       OFFSET $1 LIMIT $2
   `,
   fetchUserBookingsCount: `
@@ -95,7 +105,7 @@ export default {
   fetchAllTrips: `
       SELECT * FROM trips
   `,
-  deleteBooking: `
+  delerteBooking: `
       DELETE FROM bookings 
       WHERE user_id = $1 
       AND booking_id = $2
