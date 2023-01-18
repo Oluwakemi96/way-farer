@@ -34,5 +34,6 @@ export const CHECK_IF_SEAT_AVAILABLE = 'TripController::checkSeatAvailability';
 export const CHECK_IF_BUS_FILLED = 'TripController::checkIfBusIsFilled';
 export const CANCEL_TRIP_CONTROLLER = 'TripController::cancelTrip';
 export const FETCH_TRIPS_CONTROLLER = 'TripController::fetchAllTrips';
+export const FILTER_TRIPS_CONTROLLER = 'TripController::filterTripsByOriginOrDestination';
 
 

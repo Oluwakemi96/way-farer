@@ -19,6 +19,7 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
+  console.log(__dirname, 'DIR');
   var filePath = path.join(__dirname, 'sqls', '20230109143845-seed-admin-up.sql');
   return new Promise( function( resolve, reject ) {
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){

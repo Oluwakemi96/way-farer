@@ -57,11 +57,32 @@ const resetPassword = (to) => {
     }
   });
 };
+const bookTrip = (to, origin, destination, tripId, bookingId, seatNumber, tripDate) => {
+  const mailOptions = {
+    from: 'dillydot22@gmail.com',
+    to,
+    subject: 'Trip booked successfully',
+    text: `your booking to ${destination} from ${origin} was successful. Kindly find your booking details below:
+        Trip ID: ${tripId},
+        Booking ID: ${bookingId},
+        Seat Number: ${seatNumber},
+        Trip Date: ${tripDate}
+        please provide the above details on your arrival
+    `
+  };
+  transporter.sendMail(mailOptions, (err) => {
+    if (err) {
+      logger.error('mail sending failed', err.message);
+      return err;
+    }
+  });
+};
 
 
 
 export default {
   sendSignUp,
   forgotPassword,
-  resetPassword 
+  resetPassword,
+  bookTrip
 };
