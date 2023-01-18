@@ -58,6 +58,7 @@ export default {
       FROM trips
       WHERE trip_id = $1
       AND trips_status = 'active'
+      AND trip_date > NOW()
 `,
   checkSeatAvailability: `
       SELECT seat_number

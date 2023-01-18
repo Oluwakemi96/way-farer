@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "lint": "eslint --fix src/ --ext .js",
+    "lint": "eslint --fix src/ --ext .js", 
     "start": "nodemon --exec babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test  && cross-env WAYFARER_NODE_ENV=test npm run seed:reset:test && cross-env NODE_ENV=test npm run seed:up:test",
