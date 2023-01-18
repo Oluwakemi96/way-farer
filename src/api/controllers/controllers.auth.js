@@ -61,7 +61,7 @@ export const verifyEmail = async (req, res) => {
     return ApiResponse.success(res, enums.VERIFY_CLIENT_EMAIL, enums.HTTP_OK);
   } catch (error) {
     error.label =  enums.VERIFY_EMAIL_CONTROLLER;
-    logger.error(`Client email verified::${enums.VERIFY_EMAIL_CONTROLLER}`, error.message);  
+    logger.error(`Client email verification failed::${enums.VERIFY_EMAIL_CONTROLLER}`, error.message);  
   }
 };
 
