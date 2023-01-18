@@ -19,9 +19,9 @@
     "migrate:create": "db-migrate create --config database.json",
     "migrate:up:test": "db-migrate up --config database.json -e test",
     "migrate:reset:test": "db-migrate reset --config database.json -e test",
-    "seed:up": "npm run migrate up:seeds",
-    "seed:down": "npm run migrate down:seeds",
-    "seed:reset": "npm run migrate reset:seeds",
+    "seed:up": "db-migrate up:seeds",
+    "seed:down": "db-migrate down:seeds",
+    "seed:reset": "db-migrate reset:seeds",
     "seed:reset:test": "db-migrate reset:seeds --config database.json -e test",
     "seed:up:test": "db-migrate up:seeds --config database.json -e test"
   },

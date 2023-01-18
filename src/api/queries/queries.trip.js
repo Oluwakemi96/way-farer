@@ -102,10 +102,8 @@ export default {
       SELECT COUNT(id) FROM bookings
       WHERE user_id = $3 AND (trip_id = $4 OR $4 IS NULL)
   `,
-  fetchAllTrips: `
-      SELECT * FROM trips
-  `,
-  delerteBooking: `
+  
+  deleteBooking: `
       DELETE FROM bookings 
       WHERE user_id = $1 
       AND booking_id = $2
@@ -114,5 +112,19 @@ export default {
       SELECT booking_id
       FROM bookings
       WHERE booking_id = $1
+  `,
+
+  filterTrips:`
+      SELECT id, trip_id, bus_id, origin, destination, trip_date, fare, trips_status
+      FROM trips 
+      WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
+      OFFSET $3
+      LIMIT $4
+  `,
+
+  getTripsCount: `
+        SELECT COUNT(trip_id)
+        FROM trips
+        WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
   `
 };
