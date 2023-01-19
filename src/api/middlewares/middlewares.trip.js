@@ -167,3 +167,23 @@ export const checkIfBusIsFilled = async (req, res, next) => {
     );
   }
 };
+
+export const checkPlateNumber = async (req, res, next) => {
+  try {
+    const { number_plate } = req.body;
+    const plate = await Trip.checkPlateNumber([ number_plate ]);
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, ${plate.number_plate}:::Info: found plate number checkPlateNumber.middlewares.trip.js`
+    );
+  
+    if (number_plate)
+      return ApiResponse.error(res, enums.NUMBER_PLATE_FOUND, enums.HTTP_BAD_REQUEST);
+    return next();
+  } catch (error) {
+    error.label = enums.CHECK_DUPLICATE_PLATE_NUMBER;
+    logger.error(
+      `check if bus is filled failed::${enums.CHECK_DUPLICATE_PLATE_NUMBER}::::${error.message}`
+    );
+  }
+};
+

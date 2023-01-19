@@ -13,8 +13,9 @@ export const checkSeatAvailability = (payload) => DB.singleTransact('checkSeatAv
 export const countFilledSeats = (payload) => DB.singleTransact('countFilledSeats', payload, enums.TRIP_QUERY);
 export const checkBusCapacity = (payload) => DB.singleTransact('checkBusCapacity', payload, enums.TRIP_QUERY);
 export const deleteBooking = (payload) => DB.noReturnTransact('deleteBooking', payload, enums.TRIP_QUERY);
+export const checkPlateNumber = (payload) => DB.singleTransact('checkPlateNumber', payload, enums.TRIP_QUERY);
 export const findBooking = (payload) => DB.singleTransact('findBooking', payload, enums.TRIP_QUERY);
-
+export const fetchTripDetails = (payload) => DB.singleTransact('fetchTripDetails', payload, enums.TRIP_QUERY);
 export const fetchAllBookings = async (payload) => DB.multipleTransaction([
   DB.transact('fetchAllBookings', payload, enums.TRIP_QUERY),
   DB.transact('fetchBookingsCount', payload, enums.TRIP_QUERY)
