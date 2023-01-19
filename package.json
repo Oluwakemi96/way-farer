@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint --fix src/ --ext .js",
-    "prestart": "cross-env WAYFARER_NODE_ENV=production npm run migrate:reset && npm run migrate:up && cross-env WAYFARER_NODE_ENV=production npm run seed:reset && npm run seed:up", 
+    "prestart": "cross-env WAYFARER_NODE_ENV=production npm run migrate:reset && npm run migrate:up && cross-env WAYFARER_NODE_ENV=production db-migrate reset:seeds && npm run seed:up", 
     "start": "cross-env WAYFARER_NODE_ENV=production babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test  && cross-env WAYFARER_NODE_ENV=test npm run seed:reset:test && cross-env NODE_ENV=test npm run seed:up:test",
