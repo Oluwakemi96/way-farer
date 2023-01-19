@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint --fix src/ --ext .js", 
-    "start": "nodemon --exec babel-node src/app.js",
+    "start": "npm run migrate:up && npm run seed:up && nodemon --exec babel-node src/app.js",
     "dev": "nodemon --exec babel-node src/app.js",
     "pretest": "cross-env WAYFARER_NODE_ENV=test npm run lint && cross-env WAYFARER_NODE_ENV=test npm run migrate:reset:test && cross-env WAYFARER_NODE_ENV=test npm run migrate:up:test  && cross-env WAYFARER_NODE_ENV=test npm run seed:reset:test && cross-env NODE_ENV=test npm run seed:up:test",
     "test": "cross-env WAYFARER_NODE_ENV=test mocha --require @babel/register \"./test/**/*.js\" --timeout 120000 --exit",
