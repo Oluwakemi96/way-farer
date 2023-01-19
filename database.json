@@ -1,5 +1,5 @@
 {
-    "defaultEnv": "production",
+    "defaultEnv": "development",
     "development": {
       "ENV": "WAYFARER_DEV_DATABASE_URL"
     },
