@@ -31,7 +31,8 @@ export const CHECK_IF_TRIP_AVAILABLE = 'TripController::checkTripStatus';
 export const CHECK_IF_BUS_EXISTS = 'TripController::checkIfBusExists';
 export const CHECK_IF_BUS_AVAILABLE = 'TripController::checkBusAvailability';
 export const CHECK_IF_SEAT_AVAILABLE = 'TripController::checkSeatAvailability';
-export const CHECK_IF_BUS_FILLED = 'TripController::checkIfBusIsFilled';
+export const CHECK_IF_BUS_FILLED = 'TripMiddleware::checkIfBusIsFilled';
+export const CHECK_DUPLICATE_PLATE_NUMBER = 'TripMiddleware::checkPlateNumber';
 export const CANCEL_TRIP_CONTROLLER = 'TripController::cancelTrip';
 export const FETCH_TRIPS_CONTROLLER = 'TripController::fetchAllTrips';
 

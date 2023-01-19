@@ -33,6 +33,11 @@ export default {
       AND trips_status = 'active'
       OR trips_status = 'in-progress'
     `,
+  checkPlateNumber: `
+      SELECT number_plate
+      FROM buses 
+      WHERE number_plate = $1
+  `,
   findTrip: `
       SELECT trip_id
       FROM trips
@@ -106,7 +111,7 @@ export default {
   fetchAllTrips: `
       SELECT * FROM trips
   `,
-  delerteBooking: `
+  deleteBooking: `
       DELETE FROM bookings 
       WHERE user_id = $1 
       AND booking_id = $2

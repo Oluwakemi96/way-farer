@@ -30,6 +30,7 @@ router.get('/admin/fetch-bookings', TripController.fetchAllBookings);
 router.post(
   '/register-bus',
   Model(Schema.registerBus, 'payload'),
+  TripMiddleware.checkPlateNumber,
   TripController.registerBus
 );
 
