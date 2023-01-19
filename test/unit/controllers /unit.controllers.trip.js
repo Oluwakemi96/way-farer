@@ -1,15 +1,15 @@
-import { expect } from "chai";
-import sinon from "sinon";
-import enums from "../../../src/lib/enums";
-import * as TripController from "../../../src/api/controllers/controllers.trip";
+import { expect } from 'chai';
+import sinon from 'sinon';
+import enums from '../../../src/lib/enums';
+import * as TripController from '../../../src/api/controllers/controllers.trip';
 
-describe("", () => {
+describe('', () => {
   let status, next;
 
   const res = {
-    status: "error",
-    error: "INTERNAL_SERVER_ERROR",
-    code: enums.HTTP_INTERNAL_SERVER_ERROR,
+    status: 'error',
+    error: 'INTERNAL_SERVER_ERROR',
+    code: enums.HTTP_INTERNAL_SERVER_ERROR
   };
 
   beforeEach(() => {
@@ -19,57 +19,59 @@ describe("", () => {
     next.returns(res);
   });
 
-  describe("Admin controller catch block unit testings", () => {
-    it("should call register bus", async () => {
+  describe('Admin controller catch block unit testings', () => {
+    it('should call register bus', async () => {
       const req = { body: undefined };
       await TripController.registerBus(req, res, next);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
 
-    it("should call create trip", async () => {
+    it('should call create trip', async () => {
       const req = { body: undefined };
       await TripController.createTrip(req, res, next);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
 
-    it("should call cancel trip", async () => {
+    it('should call cancel trip', async () => {
       const req = { params: undefined };
       await TripController.cancelTrip(req, res, next);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
 
-    it("should call book trip", async () => {
+    it('should call book trip', async () => {
       const req = { body: undefined };
       await TripController.bookTrip(req, res, next);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
-    it("should call fetch all bookings", async () => {
+    it('should call fetch all bookings', async () => {
       const req = null;
       await TripController.fetchAllBookings(req, res);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
-    it("should call fetch all user bookings", async () => {
+    it('should call fetch all user bookings', async () => {
       const req = { data: undefined };
       await TripController.fetchAllUserBookings(req, res, next);
       expect(res.code).to.equal(500);
-      expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+      expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
   });
-  it("should call fetch all trips", async () => {
-    const req = { data: undefined };
-    await TripController.fetchAllTrips(req, res, next);
-    expect(res.code).to.equal(500);
-    expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
-  });
-  it("should call delete booking", async () => {
+
+  it('should call delete booking', async () => {
     const req = { data: undefined };
     await TripController.deleteBooking(req, res, next);
     expect(res.code).to.equal(500);
-    expect(res.error).to.equal("INTERNAL_SERVER_ERROR");
+    expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
+  });
+
+  it('should call filter trips', async () => {
+    const req = { query: undefined };
+    await TripController.filterTrips(req, res, next);
+    expect(res.code).to.equal(500);
+    expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
   });
 });

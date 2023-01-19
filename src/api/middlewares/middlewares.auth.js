@@ -108,12 +108,13 @@ export const emailDoesNotExist = async (req, res, next) => {
     const { email } = req.body;
     const user = await authServices.findEmail([ email ]);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: user with email found emailDoesNotExist.middlewares.auth.js`);
-    if (!user) return ApiResponse.error(res, enums.EMAIL_DOES_NOT_EXIST, enums.HTTP_BAD_REQUEST);
+    if (!user) return ApiResponse.error(res, enums.ADMIN_EMAIL_DOES_NOT_EXIST, enums.HTTP_BAD_REQUEST);
     req.user = user;
     return next();
   } catch (error) {
     error.label = enums.EMAIL_DOES_NOT_EXIST;
-    logger.error(`checking if email exists::${enums.EMAIL_DOES_NOT_EXIST}`, error.message);
+    logger.error(`checking if email exists failed::${enums.EMAIL_DOES_NOT_EXIST}`, error.message);
+    return error;
   }
 };
 

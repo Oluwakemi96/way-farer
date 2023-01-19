@@ -7,7 +7,7 @@ export const SOMETHING_BROKE_MESSAGE = 'Oooops! Something broke, kindly try late
 export const REGISTER_USER = 'user registered successfully';
 export const VERIFY_CLIENT_EMAIL = 'email verified successfully';
 export const EXISTING_EMAIL = 'email already exist, please signup with another email';
-export const EMAIL_DOES_NOT_EXIST = 'email does not exist, signup';
+export const ADMIN_EMAIL_DOES_NOT_EXIST = 'email does not exist, signup';
 export const UNVERIFIED_EMAIL = 'email unverified, check your email inbox to verify your account';
 export const ACCOUNT_CREATED = 'user registered successfully';
 export const EMAIL_REQUIRED = 'email is required';
@@ -35,6 +35,7 @@ export const FETCH_ALL_BOOKINGS = 'bookings fetched successfully';
 export const FETCH_ALL_TRIPS = 'trips fetched successfully';
 export const BOOKING_NOT_FOUND = 'booking not found';
 export const DELETE_BOOKING = 'booking deleted successfully';
+export const FILTER_TRIPS = 'successfully filtered trips';
 
 
 

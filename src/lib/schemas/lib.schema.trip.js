@@ -37,3 +37,10 @@ export const bookTrip = Joi.object().keys({
   bus_id: Joi.string().required(),
   seat_number: Joi.number().min(1)
 });
+
+export const filterTrips = Joi.object().keys({
+  origin: Joi.string().optional(),
+  destination: Joi.string().optional(),
+  page: Joi.number().optional(),
+  per_page: Joi.number().optional()
+});

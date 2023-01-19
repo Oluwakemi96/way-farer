@@ -15,3 +15,8 @@ export const setTokenExpire = (minutes) => {
 export const verifyToken = (token, SECRET) => {
   return jwt.verify(token, SECRET);
 };
+
+export const calculatePages = (total, limit) => {
+  const displayPage = Math.floor(total / limit);
+  return total % limit ? displayPage + 1 : displayPage;
+};

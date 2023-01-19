@@ -9,7 +9,6 @@ const router = Router();
 
 router.use(AuthMiddleware.authenticate);
 router.get('/fetch-bookings', TripController.fetchAllUserBookings);
-router.get('/fetch-trips', TripController.fetchAllTrips);
 router.post(
   '/book-trip',
   Model(Schema.bookTrip, 'payload'),
@@ -25,6 +24,13 @@ router.delete(
   TripMiddleware.checkIfBookingExists,
   TripController.deleteBooking
 );
+
+router.get(
+  '/filter-trips',
+  Model(Schema.filterTrips, 'query'),
+  TripController.filterTrips
+);
+
 router.use(AuthMiddleware.isAdmin);
 router.get('/admin/fetch-bookings', TripController.fetchAllBookings);
 router.post(

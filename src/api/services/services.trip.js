@@ -12,21 +12,21 @@ export const checkTripStatus = (payload) => DB.singleTransact('checkTripStatus',
 export const checkSeatAvailability = (payload) => DB.singleTransact('checkSeatAvailability', payload, enums.TRIP_QUERY);
 export const countFilledSeats = (payload) => DB.singleTransact('countFilledSeats', payload, enums.TRIP_QUERY);
 export const checkBusCapacity = (payload) => DB.singleTransact('checkBusCapacity', payload, enums.TRIP_QUERY);
-export const fetchAllTrips = (payload) => DB.transact('fetchAllTrips', payload, enums.TRIP_QUERY);
 export const deleteBooking = (payload) => DB.noReturnTransact('deleteBooking', payload, enums.TRIP_QUERY);
 export const checkPlateNumber = (payload) => DB.singleTransact('checkPlateNumber', payload, enums.TRIP_QUERY);
 export const findBooking = (payload) => DB.singleTransact('findBooking', payload, enums.TRIP_QUERY);
-export const fetchAllBookings = async (payload) => {
-  const [ bookings, [ { count } ]  ] = await Promise.all([
-    DB.transact('fetchAllBookings', [ ...payload ], enums.TRIP_QUERY),
-    DB.transact('fetchBookingsCount', [ ...payload ], enums.TRIP_QUERY)
-  ]);
-  return { count, bookings};
-};
-export const fetchAllUserBookings = async (payload) => {
-  const [ bookings, [ { count } ]  ] = await Promise.all([
-    DB.transact('fetchAllUserBookings', [ ...payload ], enums.TRIP_QUERY),
-    DB.transact('fetchUserBookingsCount', [ ...payload ], enums.TRIP_QUERY)
-  ]);
-  return { count, bookings};
-};
+export const fetchTripDetails = (payload) => DB.singleTransact('fetchTripDetails', payload, enums.TRIP_QUERY);
+export const fetchAllBookings = async (payload) => DB.multipleTransaction([
+  DB.transact('fetchAllBookings', payload, enums.TRIP_QUERY),
+  DB.transact('fetchBookingsCount', payload, enums.TRIP_QUERY)
+]); 
+    
+export const fetchAllUserBookings = async (payload) => DB.multipleTransaction([
+  DB.transact('fetchAllUserBookings', payload, enums.TRIP_QUERY),
+  DB.transact('fetchUserBookingsCount', payload, enums.TRIP_QUERY)
+]);
+  
+export const filterTrips = async(payload) => DB.multipleTransaction([
+  await DB.transact('filterTrips', payload, enums.TRIP_QUERY),
+  await DB.transact('getTripsCount', payload, enums.TRIP_QUERY)
+]);
