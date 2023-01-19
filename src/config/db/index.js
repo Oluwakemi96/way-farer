@@ -3,8 +3,9 @@ import promise from 'bluebird';
 import config from '../index';
 
 // Initialize postgres database
-const pg = pgp({ promiseLib: promise, noWarnings: true });
+const pg = pgp({ promiseLib: promise, noWarnings: true, ssl: {
+  rejectUnauthorized: false
+}});
 const db = pg(config.WAYFARER_DATABASE_URL);
-db.ssl = { rejectUnauthorized: false };
 
 export { db };
