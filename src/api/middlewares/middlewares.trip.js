@@ -173,10 +173,9 @@ export const checkPlateNumber = async (req, res, next) => {
     const { number_plate } = req.body;
     const plate = await Trip.checkPlateNumber([ number_plate ]);
     logger.info(
-      `${enums.CURRENT_TIME_STAMP}, ${plate.number_plate}:::Info: found plate number checkPlateNumber.middlewares.trip.js`
+      `${enums.CURRENT_TIME_STAMP}, ${plate}:::Info: found plate number checkPlateNumber.middlewares.trip.js`
     );
-  
-    if (number_plate)
+    if (number_plate) 
       return ApiResponse.error(res, enums.NUMBER_PLATE_FOUND, enums.HTTP_BAD_REQUEST);
     return next();
   } catch (error) {

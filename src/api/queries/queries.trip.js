@@ -139,5 +139,5 @@ export default {
         SELECT COUNT(trip_id)
         FROM trips
         WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
-  `,
+  `
 };
