@@ -34,9 +34,9 @@ describe('', () => {
       expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
 
-    it('should call cancel trip', async () => {
-      const req = { params: undefined };
-      await TripController.cancelTrip(req, res, next);
+    it('should call trip status', async () => {
+      const req = { params: undefined, query: '' };
+      await TripController.updateTripStatus(req, res, next);
       expect(res.code).to.equal(500);
       expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
@@ -70,6 +70,13 @@ describe('', () => {
 
   it('should call filter trips', async () => {
     const req = { query: undefined };
+    await TripController.filterTrips(req, res, next);
+    expect(res.code).to.equal(500);
+    expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
+  });
+
+  it('should call get available buses', async () => {
+    const req = null;
     await TripController.filterTrips(req, res, next);
     expect(res.code).to.equal(500);
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');

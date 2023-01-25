@@ -21,6 +21,11 @@ export default {
       VALUES ($1, $2, $3, $4, $5)
       RETURNING *
     `,
+  updateBusStatus: `
+      UPDATE buses
+      SET bus_status = 'active'
+      WHERE bus_id = $1
+    `,
   findBus: `
       SELECT bus_id
       FROM buses
@@ -43,9 +48,9 @@ export default {
       FROM trips
       WHERE trip_id = $1
 `,
-  cancelTrip: `
+  updateTripStatus: `
       UPDATE trips
-      SET trips_status = 'cancelled'
+      SET trips_status = $2
       WHERE trip_id = $1
     `,
   bookTrip: `
@@ -139,5 +144,10 @@ export default {
         SELECT COUNT(trip_id)
         FROM trips
         WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
+  `,
+  getAvailableBus: `
+        SELECT bus_id 
+        FROM buses
+        WHERE bus_status = 'inactive'
   `
 };

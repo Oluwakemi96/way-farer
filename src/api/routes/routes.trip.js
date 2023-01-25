@@ -49,10 +49,16 @@ router.post(
 );
 
 router.put(
-  '/cancel-trip/:trip_id',
+  '/trip-status/:trip_id',
   Model(Schema.tripId, 'param'),
+  Model(Schema.tripStatus, 'query'),
   TripMiddleware.checkIfTripExists,
-  TripController.cancelTrip
+  TripController.updateTripStatus
+);
+
+router.get(
+  '/available-buses',
+  TripController.getAvailableBus
 );
 
 export default router;

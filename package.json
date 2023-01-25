@@ -20,6 +20,7 @@
     "migrate:create": "db-migrate create --config database.json",
     "migrate:up:test": "db-migrate up --config database.json -e test",
     "migrate:reset:test": "db-migrate reset --config database.json -e test",
+    "seed:create": "db-migrate create:seeds",
     "seed:up": "db-migrate up:seeds",
     "seed:down": "db-migrate down:seeds",
     "seed:reset": "db-migrate reset:seeds",

@@ -6,7 +6,7 @@ export const createTrip = (payload) => DB.singleTransact('createTrip', payload, 
 export const findTrip = (payload) => DB.singleTransact('findTrip', payload, enums.TRIP_QUERY);
 export const findBus = (payload) => DB.singleTransact('findBus', payload, enums.TRIP_QUERY);
 export const checkBusAvailability = (payload) => DB.singleTransact('checkBusAvailability', payload, enums.TRIP_QUERY);
-export const cancelTrip = (payload) => DB.noReturnTransact('cancelTrip', payload, enums.TRIP_QUERY);
+export const updateTripStatus = (payload) => DB.noReturnTransact('updateTripStatus', payload, enums.TRIP_QUERY);
 export const bookTrip = (payload) => DB.singleTransact('bookTrip', payload, enums.TRIP_QUERY);
 export const checkTripStatus = (payload) => DB.singleTransact('checkTripStatus', payload, enums.TRIP_QUERY);
 export const checkSeatAvailability = (payload) => DB.singleTransact('checkSeatAvailability', payload, enums.TRIP_QUERY);
@@ -30,3 +30,6 @@ export const filterTrips = async(payload) => DB.multipleTransaction([
   await DB.transact('filterTrips', payload, enums.TRIP_QUERY),
   await DB.transact('getTripsCount', payload, enums.TRIP_QUERY)
 ]);
+export const updateBusStatus = (payload) => DB.singleTransact('updateBusStatus', payload, enums.TRIP_QUERY);
+export const getAvailableBus = (payload) => DB.transact('getAvailableBus', payload, enums.TRIP_QUERY);
+

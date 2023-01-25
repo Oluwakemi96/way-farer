@@ -37,7 +37,7 @@ export const createTrip = async (req, res) => {
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${createdTrip.trip_id}:::Info: successfully created a trip createTrip.controllers.trip.js`
     );
-
+    await TripServices.updateBusStatus([ req.body.bus_id ]);
     return ApiResponse.success(
       res,
       enums.CREATE_TRIP,
@@ -52,15 +52,15 @@ export const createTrip = async (req, res) => {
   }
 };
 
-export const cancelTrip = async (req, res) => {
+export const updateTripStatus = async (req, res) => {
   try {
-    const { trip_id } = req.params;
-    await TripServices.cancelTrip([ trip_id ]);
+    const { params: { trip_id }, query: { trip_status } } = req;
+    await TripServices.updateTripStatus([ trip_id, trip_status ]);
     logger.info(
-      `${enums.CURRENT_TIME_STAMP}, ${trip_id}:::Info: successfully cancelled a trip cancelTrip.controllers.trip.js`
+      `${enums.CURRENT_TIME_STAMP}, ${trip_id}:::Info: successfully set trip status to ${trip_status} updateTripStatus.controllers.trip.js`
     );
 
-    return ApiResponse.success(res, enums.CANCEL_TRIP, enums.HTTP_OK);
+    return ApiResponse.success(res, enums.SET_TRIP_STATUS(trip_status), enums.HTTP_OK);
   } catch (error) {
     error.label = enums.CANCEL_TRIP_CONTROLLER;
     return logger.error(
@@ -228,4 +228,22 @@ export const filterTrips = async (req, res) => {
     );
     return error;
   }
+};
+
+export const getAvailableBus = async (req, res) => {
+  try {
+    const buses = await TripServices.getAvailableBus();
+    logger.info(
+      `${enums.CURRENT_TIME_STAMP}, ${req.data.userId} Info: successfully fetched the buses with inactive status getAvailableBus.trips.controllers.roles.js`
+    );
+    const busesStr = buses.map((bus) => bus.bus_id);
+    return ApiResponse.success(res, enums.AVAILABLE_BUS_FETCHED_SUCCESSFULLY, enums.HTTP_OK, busesStr);
+  } catch (error) {
+    error.label = enums.GET_AVAILABLE_BUS_CONTROLLER;
+    logger.error(
+      `fetching the available buses failed::${enums.GET_AVAILABLE_BUS_CONTROLLER}::::${error.message}`
+    );
+    return error;
+  }
+
 };
