@@ -38,6 +38,13 @@ export default {
                 updated_at = NOW()
         WHERE user_id = $1    
     `,
+  updateEmailVerificationToken: `
+        UPDATE users
+            SET email_token = $1,
+                email_token_expiry = $2,
+                updated_at = NOW()
+        WHERE user_id = $3
+  `,
   getUserDetailsByEmail: `
         SELECT 
             id,
@@ -71,7 +78,6 @@ export default {
             is_email_verified
             password_token           
    `,
-
   resetUserPassword: `
             UPDATE users
                 SET 

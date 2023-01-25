@@ -13,6 +13,7 @@ export const VALIDATE_PASSWORD = 'AuthMiddleware::checkIfPasswordsMatch';
 export const GENERATE_JWT = 'AuthMiddleware::generateJwt';
 export const LOGIN_CONTROLLER = 'AuthController::login';
 export const VERIFY_EMAIL_CONTROLLER = 'AuthController::verifyEmail';
+export const REGENERATE_EMAIL_TOKEN_CONTROLLER = 'AuthController::regenerateEmailToken';
 export const CHECK_EMAIL_VERIFICATION_TOKEN = 'AuthController::checkIfEmailVerificationTokenIsPresentOrExpired';
 export const CHECK_USER_AUTH = 'AuthMiddleware::checkIfUserIsAuthenticated';
 export const CHECK_IF_EMAIL_EXIST_MIDDLEWARE = 'AuthMiddleware::checkIfEmailExist';

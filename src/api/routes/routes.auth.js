@@ -25,6 +25,17 @@ router.put(
   AuthController.verifyEmail
 );
 
+router.put(
+  '/regenerate-email-token',
+  Model(Schema.forgotPassword, 'payload'),
+  [
+    AuthMiddleware.emailDoesNotExist,
+    AuthMiddleware.generateEmailVerificationToken,
+    AuthMiddleware.setEmailVerificationExpiry
+  ],
+  AuthController.regenerateEmailToken
+);
+
 router.post(
   '/login',
   Model(Schema.login, 'payload'),
@@ -46,17 +57,13 @@ router.post(
     AuthMiddleware.setEmailVerificationExpiry
   ],
   AuthController.forgotPassword
-  
 );
 
 router.patch(
   '/reset_password',
   Model(Schema.resetPasswordToken, 'query'),
   Model(Schema.resetPassword, 'payload'),
-  [
-    AuthMiddleware.verifyPasswordResetToken,
-    AuthMiddleware.hashUserPassword
-  ],
+  [ AuthMiddleware.verifyPasswordResetToken, AuthMiddleware.hashUserPassword ],
   AuthController.resetPassword
 );
 

@@ -36,6 +36,13 @@ describe('', () => {
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
   });
 
+  it('should call regenerate email verification token', async() => {
+    const req = { body: undefined };
+    await AuthController.regenerateEmailToken(req, res, next);
+    expect(res.code).to.equal(500);
+    expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
+  });
+
   it('should call user login', async() => {
     const req = { user: undefined };
     await AuthController.loginUser(req, res, next);
