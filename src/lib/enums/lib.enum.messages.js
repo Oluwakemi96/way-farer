@@ -22,7 +22,7 @@ export const INVALID_TOKEN = 'invalid or expired token';
 export const PASSWORD_RESET = 'password reset successfully';
 export const REGISTER_BUS = 'bus registered successfully';
 export const CREATE_TRIP = 'trip created successfully';
-export const CANCEL_TRIP = 'trip cancelled successfully';
+export const SET_TRIP_STATUS = (trip_status) => `successfully sets the trip status to ${trip_status}`;
 export const TRIP_NOT_FOUND = 'trip not found';
 export const TRIP_UNAVAILABLE = 'trip no longer available';
 export const BUS_NOT_FOUND = 'bus not found';
@@ -37,6 +37,7 @@ export const FETCH_ALL_TRIPS = 'trips fetched successfully';
 export const BOOKING_NOT_FOUND = 'booking not found';
 export const DELETE_BOOKING = 'booking deleted successfully';
 export const FILTER_TRIPS = 'successfully filtered trips';
+export const AVAILABLE_BUS_FETCHED_SUCCESSFULLY = 'successfully fetched available buses';
 
 
 

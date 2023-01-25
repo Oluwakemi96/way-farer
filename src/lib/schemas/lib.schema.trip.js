@@ -44,3 +44,8 @@ export const filterTrips = Joi.object().keys({
   page: Joi.number().optional(),
   per_page: Joi.number().optional()
 });
+
+export const tripStatus = Joi.object().keys({
+  trip_status: Joi.string().required().valid('active', 'cancelled', 'completed', 'in-progress')
+});
+

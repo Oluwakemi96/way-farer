@@ -354,14 +354,17 @@ describe('Trip Routes', () => {
   it('Should cancel trip status successfully', (done) => {
     chai
       .request(app)
-      .put(`/api/v1/trip/cancel-trip/${process.env.WAYFARER_TRIP_ID}`)
+      .put(`/api/v1/trip/trip-status/${process.env.WAYFARER_TRIP_ID}`)
       .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
+      .query({
+        trip_status: 'active'
+      })
       .end((err, res) => {
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.message).to.equal(enums.CANCEL_TRIP);
+        expect(res.body.message).to.equal(enums.SET_TRIP_STATUS('active'));
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
       });
@@ -627,6 +630,23 @@ describe('Trip Routes', () => {
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
         expect(res.body.message).to.equal(enums.FILTER_TRIPS);
+        expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
+        done();
+      });
+  });
+
+  it('Should fetch all available buses', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/trip/available-buses')
+      .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.statusCode).to.equal(enums.HTTP_OK);
+        expect(res.body).to.have.property('message');
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('data');
+        expect(res.body.message).to.equal(enums.AVAILABLE_BUS_FETCHED_SUCCESSFULLY);
         expect(res.body.status).to.equal(enums.SUCCESS_STATUS);
         done();
       });

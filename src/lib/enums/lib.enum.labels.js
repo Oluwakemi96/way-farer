@@ -37,5 +37,6 @@ export const CHECK_DUPLICATE_PLATE_NUMBER = 'TripMiddleware::checkPlateNumber';
 export const CANCEL_TRIP_CONTROLLER = 'TripController::cancelTrip';
 export const FETCH_TRIPS_CONTROLLER = 'TripController::fetchAllTrips';
 export const FILTER_TRIPS_CONTROLLER = 'TripController::filterTripsByOriginOrDestination';
+export const GET_AVAILABLE_BUS_CONTROLLER = 'TripController::getAvailableBus';
 
 
