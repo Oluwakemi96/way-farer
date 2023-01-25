@@ -38,7 +38,6 @@ describe('Trip Routes', () => {
       .set({ Authorization: process.env.WAYFARER_ADMIN_JWT_TOKEN })
       .send(payload.bus2)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_CREATED);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
@@ -379,7 +378,6 @@ describe('Trip Routes', () => {
         seat_number: 12
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_CREATED);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
@@ -586,7 +584,6 @@ describe('Trip Routes', () => {
         destination: 'kano'
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
@@ -606,7 +603,6 @@ describe('Trip Routes', () => {
         origin: 'Lagos'
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');
@@ -626,7 +622,6 @@ describe('Trip Routes', () => {
         origin: 'Lagos'
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(enums.HTTP_OK);
         expect(res.body).to.have.property('message');
         expect(res.body).to.have.property('status');

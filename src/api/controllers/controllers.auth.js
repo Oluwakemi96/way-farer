@@ -65,6 +65,25 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
+export const regenerateEmailToken = async (req, res) => {
+  try {
+    const { email_verification_token, expTime, user: { user_id } } = req;
+    const verificationLink = `http://explorertrips.com?token=${email_verification_token}`;
+
+    await AuthServices.updateEmailVerificationToken([ email_verification_token, expTime, user_id ]);
+    logger.info(`${enums.CURRENT_TIME_STAMP}, ${email_verification_token}:::Info: successfully regenerated user email verification token regenerateEmailToken.controllers.auth.js`);
+    if (config.WAYFARER_NODE_ENV === 'test') {
+      return ApiResponse.success(res, enums.REGENERATE_EMAIL_TOKEN, enums.HTTP_OK, email_verification_token);
+    }
+    mails.sendSignUp(req.body.email, verificationLink);
+
+    return ApiResponse.success(res, enums.REGENERATE_EMAIL_TOKEN, enums.HTTP_OK);
+  } catch (error) {
+    error.label =  enums.REGENERATE_EMAIL_TOKEN_CONTROLLER;
+    logger.error(`email token regeneration failed::${enums.REGENERATE_EMAIL_TOKEN_CONTROLLER}:::${error.message}`);  
+  }
+};
+
 export const loginUser = async (req, res) => {
   try {
     const user = _.pick(req.user, userDetails);

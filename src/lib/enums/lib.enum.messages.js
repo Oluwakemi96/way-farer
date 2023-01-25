@@ -6,6 +6,7 @@ export const DEAD_END_MESSAGE = 'Resource Not Found';
 export const SOMETHING_BROKE_MESSAGE = 'Oooops! Something broke, kindly try later';
 export const REGISTER_USER = 'user registered successfully';
 export const VERIFY_CLIENT_EMAIL = 'email verified successfully';
+export const REGENERATE_EMAIL_TOKEN = 'email token regenerated successfully';
 export const EXISTING_EMAIL = 'email already exist, please signup with another email';
 export const ADMIN_EMAIL_DOES_NOT_EXIST = 'email does not exist, signup';
 export const UNVERIFIED_EMAIL = 'email unverified, check your email inbox to verify your account';
