@@ -20,15 +20,15 @@ describe('', () => {
   });
 
   describe('Admin controller catch block unit testings', () => {
-    it('should call register bus', async () => {
-      const req = { body: undefined };
+    it('should call bus', async () => {
+      const req = { data: {userId: null} };
       await TripController.registerBus(req, res, next);
       expect(res.code).to.equal(500);
       expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
     });
 
     it('should call create trip', async () => {
-      const req = { body: undefined };
+      const req = { data: {userId: null} };
       await TripController.createTrip(req, res, next);
       expect(res.code).to.equal(500);
       expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
