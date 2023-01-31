@@ -5,6 +5,8 @@ import enums from '../../lib/enums/index';
 import ApiResponse from '../../lib/http/lib.http.responses';
 import * as Helpers from '../../lib/utils/lib.util.helpers';
 import mails from '../../config/email/mails';
+import * as ActivityTracking from '../../lib/monitor/index';
+
 
 export const registerBus = async (req, res) => {
   try {
@@ -15,6 +17,7 @@ export const registerBus = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${registeredBus.bus_id}:::Info: successfully registered bus to the database registerBus.controllers.trip.js`
     );
 
+    ActivityTracking.adminActivityTracking(req.data.userId, 13, 'success');
     return ApiResponse.success(
       res,
       enums.REGISTER_BUS,
@@ -22,6 +25,7 @@ export const registerBus = async (req, res) => {
       registeredBus
     );
   } catch (error) {
+    ActivityTracking.adminActivityTracking(req.data.userId, 13, 'fail');
     error.label = enums.REGISTER_BUS_CONTROLLER;
     return logger.error(
       `Bus registration failed::${enums.REGISTER_BUS_CONTROLLER}::::${error.message}`
@@ -38,6 +42,7 @@ export const createTrip = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${createdTrip.trip_id}:::Info: successfully created a trip createTrip.controllers.trip.js`
     );
     await TripServices.updateBusStatus([ req.body.bus_id ]);
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
     return ApiResponse.success(
       res,
       enums.CREATE_TRIP,
@@ -45,6 +50,7 @@ export const createTrip = async (req, res) => {
       createdTrip
     );
   } catch (error) {
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'fail');
     error.label = enums.CREATE_TRIP_CONTROLLER;
     return logger.error(
       `trip creation failed::${enums.CREATE_TRIP_CONTROLLER}::::${error.message}`
@@ -60,6 +66,7 @@ export const updateTripStatus = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${trip_id}:::Info: successfully set trip status to ${trip_status} updateTripStatus.controllers.trip.js`
     );
 
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
     return ApiResponse.success(res, enums.SET_TRIP_STATUS(trip_status), enums.HTTP_OK);
   } catch (error) {
     error.label = enums.CANCEL_TRIP_CONTROLLER;
