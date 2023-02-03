@@ -1,10 +1,11 @@
-import * as TripServices from "../services/services.trip";
-import TripPayloads from "../../lib/payloads/lib.payload.admin";
-import Payloads from "../../lib/payloads/lib.payload.trips";
-import enums from "../../lib/enums/index";
-import ApiResponse from "../../lib/http/lib.http.responses";
-import * as Helpers from "../../lib/utils/lib.util.helpers";
-import mails from "../../config/email/mails";
+import * as TripServices from '../services/services.trip';
+import TripPayloads from '../../lib/payloads/lib.payload.admin';
+import Payloads from '../../lib/payloads/lib.payload.trips';
+import * as ActivityTracking from '../../lib/monitor/index';
+import enums from '../../lib/enums/index';
+import ApiResponse from '../../lib/http/lib.http.responses';
+import * as Helpers from '../../lib/utils/lib.util.helpers';
+import mails from '../../config/email/mails';
 
 export const registerBus = async (req, res) => {
   try {
@@ -15,6 +16,7 @@ export const registerBus = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${registeredBus.bus_id}:::Info: successfully registered bus to the database registerBus.controllers.trip.js`
     );
 
+    ActivityTracking.adminActivityTracking(req.data.userId, 13, 'success');
     return ApiResponse.success(
       res,
       enums.REGISTER_BUS,
@@ -22,6 +24,7 @@ export const registerBus = async (req, res) => {
       registeredBus
     );
   } catch (error) {
+    ActivityTracking.adminActivityTracking(req.data.userId, 13, 'fail');
     error.label = enums.REGISTER_BUS_CONTROLLER;
     return logger.error(
       `Bus registration failed::${enums.REGISTER_BUS_CONTROLLER}::::${error.message}`
@@ -37,7 +40,8 @@ export const createTrip = async (req, res) => {
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${createdTrip.trip_id}:::Info: successfully created a trip createTrip.controllers.trip.js`
     );
-    await TripServices.updateBusStatus([req.body.bus_id]);
+    await TripServices.updateBusStatus([ req.body.bus_id ]);
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
     return ApiResponse.success(
       res,
       enums.CREATE_TRIP,
@@ -45,6 +49,7 @@ export const createTrip = async (req, res) => {
       createdTrip
     );
   } catch (error) {
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'fail');
     error.label = enums.CREATE_TRIP_CONTROLLER;
     return logger.error(
       `trip creation failed::${enums.CREATE_TRIP_CONTROLLER}::::${error.message}`
@@ -56,18 +61,15 @@ export const updateTripStatus = async (req, res) => {
   try {
     const {
       params: { trip_id },
-      query: { trip_status },
+      query: { trip_status }
     } = req;
-    await TripServices.updateTripStatus([trip_id, trip_status]);
+    await TripServices.updateTripStatus([ trip_id, trip_status ]);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${trip_id}:::Info: successfully set trip status to ${trip_status} updateTripStatus.controllers.trip.js`
     );
 
-    return ApiResponse.success(
-      res,
-      enums.SET_TRIP_STATUS(trip_status),
-      enums.HTTP_OK
-    );
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
+    return ApiResponse.success(res, enums.SET_TRIP_STATUS(trip_status), enums.HTTP_OK);
   } catch (error) {
     error.label = enums.CANCEL_TRIP_CONTROLLER;
     return logger.error(
@@ -84,13 +86,13 @@ export const bookTrip = async (req, res) => {
       trip_id,
       userId,
       bus_id,
-      seat_number,
+      seat_number
     ]);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${bookedTrip.trip_id}:::Info: successfully booked trip bookTrip.controllers.trip.js`
     );
     const { origin, destination, trip_date } =
-      await TripServices.fetchTripDetails([bookedTrip.trip_id]);
+      await TripServices.fetchTripDetails([ bookedTrip.trip_id ]);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${bookedTrip.trip_id}:::Info: successfully fetched trip details bookTrip.controllers.trip.js`
     );
@@ -125,7 +127,7 @@ export const fetchAllBookings = async (req, res) => {
   try {
     const { query } = req;
     const payload = Payloads.fetchAllBookings(query);
-    const [bookings, [bookingsCount]] = await TripServices.fetchAllBookings(
+    const [ bookings, [ bookingsCount ] ] = await TripServices.fetchAllBookings(
       payload
     );
     logger.info(
@@ -138,7 +140,7 @@ export const fetchAllBookings = async (req, res) => {
         Number(bookingsCount.count),
         Number(req.query.per_page) || 10
       ),
-      bookings,
+      bookings
     };
     return ApiResponse.success(
       res,
@@ -160,7 +162,7 @@ export const fetchAllUserBookings = async (req, res) => {
     const { userId } = req.data;
     const { query } = req;
     const payload = Payloads.fetchAllUserBookings(query, userId);
-    const [userBookings, [userBookingsCount]] =
+    const [ userBookings, [ userBookingsCount ] ] =
       await TripServices.fetchAllUserBookings(payload);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${userBookings.user_id}:::Info: successfully fetched all bookings fetchAllUserBookings.controllers.trip.js`
@@ -172,7 +174,7 @@ export const fetchAllUserBookings = async (req, res) => {
         Number(userBookingsCount.count),
         Number(req.query.per_page) || 10
       ),
-      userBookings,
+      userBookings
     };
     return ApiResponse.success(
       res,
@@ -193,7 +195,7 @@ export const deleteBooking = async (req, res) => {
   try {
     const { userId } = req.data;
     const { bookingId } = req.params;
-    await TripServices.deleteBooking([userId, bookingId]);
+    await TripServices.deleteBooking([ userId, bookingId ]);
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, :::Info: successfully deleted booking deleteBooking.controllers.trip.js`
     );
@@ -213,7 +215,7 @@ export const filterTrips = async (req, res) => {
     const { userId } = req.data;
     const { query } = req;
     const payload = Payloads.filterTrips(query);
-    const [trips, [tripsCount]] = await TripServices.filterTrips(payload);
+    const [ trips, [ tripsCount ] ] = await TripServices.filterTrips(payload);
 
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${userId} Info: successfully filtered trips by origin or destination filterTripsByOriginOrDestination.trips.controllers.roles.js`
@@ -225,7 +227,7 @@ export const filterTrips = async (req, res) => {
         Number(tripsCount.count),
         Number(req.query.per_page) || 10
       ),
-      trips,
+      trips
     };
     return ApiResponse.success(res, enums.FILTER_TRIPS, 200, data);
   } catch (error) {
@@ -239,7 +241,7 @@ export const filterTrips = async (req, res) => {
 
 export const getAvailableBus = async (req, res) => {
   try {
-    const [buses] = await TripServices.getAvailableBus();
+    const [ buses ] = await TripServices.getAvailableBus();
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, ${req.data.userId} Info: successfully fetched the buses with inactive status getAvailableBus.trips.controllers.roles.js`
     );
@@ -262,15 +264,15 @@ export const getSeatStatus = async (req, res) => {
   try {
     let seats = {};
     const { trip_id } = req.params;
-    const buses = await TripServices.getSeatStatus([trip_id]);
+    const buses = await TripServices.getSeatStatus([ trip_id ]);
     for (let i = 1; i <= buses.capacity; i++) {
-      seats[i] = false
+      seats[i] = false;
     }
     buses.unavailable_seats.map(seat => {
       if (seat) {
-      seats[seat] = true
+        seats[seat] = true;
       }
-    })
+    });
     logger.info(
       `${enums.CURRENT_TIME_STAMP}, - Info: successfully fetched the bus seats getSeatStatus.trips.controllers.roles.js`
     );

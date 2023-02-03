@@ -61,12 +61,13 @@ export const checkIfEmailAlreadyExist = async (req, res, next) => {
 export const checkIfEmailExist = async (req, res, next) => {
   try {
     const { email } = req.body;
-    const userEmail = await authServices.findEmail([ email ]);
+    const user = await authServices.findEmail([ email ]);
     logger.info(`${enums.CURRENT_TIME_STAMP}, :::Info: successfully checked if email exists.middlewares.auth.js`);
 
-    if (!userEmail){
+    if (!user){
       return ApiResponse.error(res, enums.EMAIL_NOT_FOUND, enums.HTTP_BAD_REQUEST);
     }
+    req.user = user;
     return next();
   } catch (error) {
     error.label = enums.CHECK_IF_EMAIL_EXIST_MIDDLEWARE; 
