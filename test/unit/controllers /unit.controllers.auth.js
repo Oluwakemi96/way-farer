@@ -44,21 +44,21 @@ describe('', () => {
   });
 
   it('should call user login', async() => {
-    const req = { user: undefined };
+    const req = { user: '' };
     await AuthController.loginUser(req, res, next);
     expect(res.code).to.equal(500);
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
   });
 
   it('should call user forgot password', async() => {
-    const req = { forgot_password_token: undefined, body: undefined, expTime: undefined };
+    const req = { user: '', body: '' };
     await AuthController.forgotPassword(req, res, next);
     expect(res.code).to.equal(500);
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
   });
 
   it('should call user reset password', async() => {
-    const req = { hashedPassword: undefined, user: undefined };
+    const req = { user: '' };
     await AuthController.resetPassword(req, res, next);
     expect(res.code).to.equal(500);
     expect(res.error).to.equal('INTERNAL_SERVER_ERROR');
