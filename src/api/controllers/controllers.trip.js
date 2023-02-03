@@ -1,7 +1,7 @@
 import * as TripServices from '../services/services.trip';
 import TripPayloads from '../../lib/payloads/lib.payload.admin';
 import Payloads from '../../lib/payloads/lib.payload.trips';
-import ActivityTracking from '../../lib/monitor/lib.monitor.operations';
+import * as ActivityTracking from '../../lib/monitor/index';
 import enums from '../../lib/enums/index';
 import ApiResponse from '../../lib/http/lib.http.responses';
 import * as Helpers from '../../lib/utils/lib.util.helpers';
