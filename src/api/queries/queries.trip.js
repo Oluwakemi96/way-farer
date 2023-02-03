@@ -136,18 +136,28 @@ export default {
   filterTrips: `
       SELECT id, trip_id, bus_id, origin, destination, trip_date, fare, trips_status
       FROM trips 
-      WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
+      WHERE (origin ILIKE $1 OR $1 IS NULL) AND (destination ILIKE $2 OR $2 IS NULL)
       OFFSET $3
       LIMIT $4
   `,
   getTripsCount: `
-        SELECT COUNT(trip_id)
-        FROM trips
-        WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
-  `,
+      SELECT COUNT(trip_id)
+      FROM trips
+      WHERE (origin = $1 OR $1 IS NULL) AND (destination = $2 OR $2 IS NULL)
+` ,
   getAvailableBus: `
-        SELECT bus_id 
-        FROM buses
-        WHERE bus_status = 'inactive'
+      SELECT json_agg(bus_id) AS available_buses
+      FROM buses
+      WHERE bus_status = 'inactive'
+` ,
+  getSeatStatus: `
+      SELECT json_agg(seat_number) AS unavailable_seats, capacity
+      FROM bookings
+      LEFT JOIN buses ON bookings.bus_id = buses.bus_id
+      LEFT JOIN trips ON bookings.trip_id= trips.trip_id
+      WHERE trips.trip_id = $1  
+      AND trips_status = 'active'
+      AND trip_date > NOW()
+      GROUP BY capacity, trips_status, trip_date
   `
 };
