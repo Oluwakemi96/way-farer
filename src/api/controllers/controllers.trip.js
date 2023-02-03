@@ -41,6 +41,7 @@ export const createTrip = async (req, res) => {
       `${enums.CURRENT_TIME_STAMP}, ${createdTrip.trip_id}:::Info: successfully created a trip createTrip.controllers.trip.js`
     );
     await TripServices.updateBusStatus([ req.body.bus_id ]);
+    ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
     return ApiResponse.success(
       res,
       enums.CREATE_TRIP,
@@ -68,11 +69,7 @@ export const updateTripStatus = async (req, res) => {
     );
 
     ActivityTracking.adminActivityTracking(req.data.userId, 9, 'success');
-    return ApiResponse.success(
-      res,
-      enums.SET_TRIP_STATUS(trip_status),
-      enums.HTTP_OK
-    );
+    return ApiResponse.success(res, enums.SET_TRIP_STATUS(trip_status), enums.HTTP_OK);
   } catch (error) {
     error.label = enums.CANCEL_TRIP_CONTROLLER;
     return logger.error(
