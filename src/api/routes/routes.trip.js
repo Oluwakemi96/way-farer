@@ -31,6 +31,11 @@ router.get(
   TripController.filterTrips
 );
 
+router.get(
+  '/seats/:trip_id',
+  TripController.getSeatStatus
+);
+
 router.use(AuthMiddleware.isAdmin);
 router.get('/admin/fetch-bookings', TripController.fetchAllBookings);
 router.post(
